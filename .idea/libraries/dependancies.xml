@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="dependancies">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dependancies/mssql-jdbc-8.2.2.jre8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependancies/jstl-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dependancies/log4j-1.2.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

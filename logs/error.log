@@ -1,0 +1,27 @@
+03-Feb-2021 23:25:45.554 ERROR [http-nio-8084-exec-37] (DispathFilter.java:170) - 
+03-Feb-2021 23:28:22.685 ERROR [http-nio-8084-exec-9] (DispathFilter.java:170) - 
+03-Feb-2021 23:28:24.674 ERROR [http-nio-8084-exec-12] (DispathFilter.java:170) - 
+03-Feb-2021 23:30:34.870 ERROR [http-nio-8084-exec-17] (DispathFilter.java:170) - 
+03-Feb-2021 23:31:40.894 ERROR [http-nio-8084-exec-14] (DispathFilter.java:170) - 
+04-Feb-2021 18:45:09.087 ERROR [http-nio-8084-exec-15] (DispathFilter.java:170) - 
+06-Feb-2021 22:38:30.666 ERROR [main] (QuestionDAO.java:83) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+06-Feb-2021 22:38:51.417 ERROR [main] (QuestionDAO.java:84) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+06-Feb-2021 22:40:22.495 ERROR [main] (QuestionDAO.java:84) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+06-Feb-2021 22:41:25.622 ERROR [main] (QuestionDAO.java:84) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+06-Feb-2021 22:41:39.980 ERROR [main] (QuestionDAO.java:84) - The value is not set for the parameter number 8.
+06-Feb-2021 22:42:27.647 ERROR [main] (QuestionDAO.java:85) - Incorrect syntax near the keyword 'select'.
+07-Feb-2021 15:02:34.793 ERROR [http-nio-8084-exec-74] (SearchQuestionServlet.java:94) - Must declare the scalar variable "@P1order".
+07-Feb-2021 15:02:34.886 ERROR [http-nio-8084-exec-74] (DispathFilter.java:170) - 
+07-Feb-2021 15:02:41.113 ERROR [http-nio-8084-exec-77] (DispathFilter.java:170) - 
+07-Feb-2021 15:02:50.471 ERROR [http-nio-8084-exec-78] (DispathFilter.java:170) - 
+07-Feb-2021 15:06:17.156 ERROR [http-nio-8084-exec-74] (DispathFilter.java:170) - 
+07-Feb-2021 15:07:43.237 ERROR [http-nio-8084-exec-91] (DispathFilter.java:171) - 
+07-Feb-2021 15:09:11.475 ERROR [http-nio-8084-exec-96] (DispathFilter.java:172) - 
+07-Feb-2021 15:11:58.640 ERROR [http-nio-8084-exec-1] (DispathFilter.java:172) - 
+07-Feb-2021 15:12:02.019 ERROR [http-nio-8084-exec-13] (DispathFilter.java:172) - 
+07-Feb-2021 15:12:20.163 ERROR [http-nio-8084-exec-15] (DispathFilter.java:172) - 
+07-Feb-2021 18:38:30.853 ERROR [http-nio-8084-exec-143] (DispathFilter.java:172) - p0014.linhmd.dto.Question cannot be cast to java.util.List
+07-Feb-2021 18:38:34.881 ERROR [http-nio-8084-exec-140] (DispathFilter.java:172) - p0014.linhmd.dto.Question cannot be cast to java.util.List
+07-Feb-2021 18:43:31.790 ERROR [http-nio-8084-exec-1] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
+07-Feb-2021 18:46:07.262 ERROR [http-nio-8084-exec-21] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
+07-Feb-2021 18:46:11.069 ERROR [http-nio-8084-exec-12] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
