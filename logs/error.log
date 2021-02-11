@@ -25,3 +25,48 @@
 07-Feb-2021 18:43:31.790 ERROR [http-nio-8084-exec-1] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
 07-Feb-2021 18:46:07.262 ERROR [http-nio-8084-exec-21] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
 07-Feb-2021 18:46:11.069 ERROR [http-nio-8084-exec-12] (DispathFilter.java:171) - p0014.linhmd.dto.Question cannot be cast to java.util.List
+09-Feb-2021 13:10:47.884 ERROR [http-nio-8084-exec-10] (DispathFilter.java:171) - An exception occurred processing JSP page /UpdateQuestion.jsp at line 78
+
+75:                     <label>
+76:                         Subject
+77:                         <select class=" form-control mdb-select md-form mx-3  active-cyan float-xl-right" name="correct">
+78:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == 'a'? 'selected': ''}">A</option>
+79:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == 'b'? 'selected': ''}">B</option>
+80:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == 'c'? 'selected': ''}">c</option>
+81:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == 'd'? 'selected': ''}">D</option>
+
+
+Stacktrace:
+09-Feb-2021 13:13:00.931 ERROR [http-nio-8084-exec-20] (DispathFilter.java:171) - An exception occurred processing JSP page /UpdateQuestion.jsp at line 78
+
+75:                     <label>
+76:                         Subject
+77:                         <select class=" form-control mdb-select md-form mx-3  active-cyan float-xl-right" name="correct">
+78:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == "a"? "selected": ""}">A</option>
+79:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == "b"? "selected": ""}">B</option>
+80:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == "c"? "selected": ""}">c</option>
+81:                             <option selected="${sessionScope.UPDATE_QUESTION.correct == "d"? "selected": ""}">D</option>
+
+
+Stacktrace:
+09-Feb-2021 23:55:34.510 ERROR [http-nio-8084-exec-52] (DispathFilter.java:171) - 
+09-Feb-2021 23:57:26.172 ERROR [http-nio-8084-exec-53] (DispathFilter.java:171) - 
+09-Feb-2021 23:59:16.359 ERROR [http-nio-8084-exec-51] (UpdateServlet.java:67) - 
+09-Feb-2021 23:59:16.380 ERROR [http-nio-8084-exec-51] (DispathFilter.java:171) - 
+10-Feb-2021 00:23:52.688 ERROR [http-nio-8084-exec-50] (QuestionDAO.java:138) - The value is not set for the parameter number 8.
+10-Feb-2021 01:31:10.530 ERROR [http-nio-8084-exec-136] (DispathFilter.java:171) - javax.el.ELException: Cannot convert a of type class java.lang.String to class java.lang.Long
+10-Feb-2021 20:08:53.211 ERROR [http-nio-8084-exec-14] (SearchQuestionServlet.java:97) - Must declare the scalar variable "@P2order".
+10-Feb-2021 20:08:53.277 ERROR [http-nio-8084-exec-14] (DispathFilter.java:171) - 
+10-Feb-2021 20:13:30.028 ERROR [http-nio-8084-exec-21] (SearchQuestionServlet.java:97) - Must declare the scalar variable "@P2ORDER".
+10-Feb-2021 20:13:30.129 ERROR [http-nio-8084-exec-21] (DispathFilter.java:171) - 
+10-Feb-2021 20:14:03.575 ERROR [http-nio-8084-exec-27] (SearchQuestionServlet.java:97) - Invalid column name 'subject_id'.
+10-Feb-2021 20:14:03.674 ERROR [http-nio-8084-exec-27] (DispathFilter.java:171) - 
+10-Feb-2021 21:43:05.128 ERROR [http-nio-8084-exec-196] (DispathFilter.java:171) - 
+10-Feb-2021 21:43:52.706 ERROR [http-nio-8084-exec-192] (DispathFilter.java:176) - 
+10-Feb-2021 21:45:14.077 ERROR [http-nio-8084-exec-203] (DispathFilter.java:176) - 
+10-Feb-2021 21:47:20.237 ERROR [http-nio-8084-exec-211] (DispathFilter.java:176) - 
+10-Feb-2021 21:51:15.704 ERROR [http-nio-8084-exec-204] (DispathFilter.java:171) - 
+10-Feb-2021 21:53:45.480 ERROR [http-nio-8084-exec-6] (DispathFilter.java:171) - 
+10-Feb-2021 21:54:53.667 ERROR [http-nio-8084-exec-7] (DispathFilter.java:171) - Index: 21, Size: 21
+10-Feb-2021 21:54:58.328 ERROR [http-nio-8084-exec-2] (DispathFilter.java:171) - Index: 21, Size: 21
+11-Feb-2021 20:50:10.888 ERROR [http-nio-8084-exec-34] (DispathFilter.java:167) - /ChooseSubject.jsp (line: 35, column: 20) According to the TLD or the tag file, attribute name is mandatory for tag param

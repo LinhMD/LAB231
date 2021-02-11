@@ -16,17 +16,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import p0014.linhmd.dao.QuestionDAO;
-import p0014.linhmd.dao.SubjectDAO;
 import p0014.linhmd.dto.Question;
-import p0014.linhmd.dto.Subject;
 import p0014.linhmd.dto.User;
+import p0014.linhmd.singleton.SubjectList;
 
 /**
  *
  * @author USER
  */
 public class SearchQuestionServlet extends HttpServlet {
+
     private static final Logger LOGGER = Logger.getLogger(RegisterServlet.class);
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,65 +39,69 @@ public class SearchQuestionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = null;
-        Properties action = (Properties)this.getServletContext().getAttribute("ACTION");
-        try  {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+        Properties action = (Properties) this.getServletContext().getAttribute("ACTION");
+        String url = action.getProperty("AdminView");
+        try {
             String subject = request.getParameter("subject");
             String content = request.getParameter("content");
-            int status = request.getParameter("status") != null? 0 : 1;
+            int status = request.getParameter("status") != null ? 0 : 1;
             String page = request.getParameter("pageNum");
-            int pageNum = page == null? 0: Integer.parseInt(page);
+            int pageNum = page == null ? 0 : Integer.parseInt(page);
             String type = request.getParameter("btnAction");
-            
-            if(type != null){
-                switch(type){
-                    case "Previous":
-                        if(pageNum != 0)
-                            pageNum--;
-                        break;
-                    case "Next":
-                        pageNum++;
-                        break;
-                    case "Search":
-                        pageNum = 0;
-                        break;
-                }
-            }
-                
-            
-            QuestionDAO questionDAO = new QuestionDAO();
-            List<Question> questions = questionDAO.getQuestion(pageNum, subject, content, status);
-            
-            SubjectDAO subjectDAO = new SubjectDAO();
-            List<Subject> subjects = subjectDAO.getAllSubject();
-            
+            List<Question> questions = null;
+
             HttpSession session = request.getSession(false);
-            
-            if(session != null){
-                session.setAttribute("QUESTIONS", questions);
-                session.setAttribute("SUBJECTS", subjects);
+            if (session != null) {
                 User user = (User) session.getAttribute("USER");
-                
-                if(user == null){
+                if (user == null) {
                     url = action.getProperty("LoginPage");
                     request.setAttribute("message", "User not found, please login!");
-                }else{
-                    if(user.isAdmin())
+                } else {
+                    if (user.isAdmin()) {
+                        if (type != null) {
+                            switch (type) {
+                                case "Previous":
+                                    if (pageNum != 0) {
+                                        pageNum--;
+                                    }
+                                    break;
+                                case "Next":
+                                    pageNum++;
+                                    break;
+                                case "Search":
+                                    pageNum = 0;
+                                    break;
+                            }
+                        }
+                        QuestionDAO questionDAO = new QuestionDAO();
+                        questions = questionDAO.getQuestion(pageNum, subject, content, status);
+                        if (questions.size() > QuestionDAO.PAGE_LENGTH - 1) {
+                            request.setAttribute("hasNext", true);
+                            questions.remove(questions.size() - 1);
+                        }
                         url = action.getProperty("AdminView");
-                    else
-                        //TODO:
+                        if (questions.isEmpty() && status == 0) {
+                            request.setAttribute("message", "No question found!");
+                        } else {
+                            request.setAttribute("QUESTIONS", questions);
+                        }
+                        request.setAttribute("SUBJECTS", SubjectList.getInstance());
+                        request.setAttribute("page", pageNum);
+                    } else {
                         url = action.getProperty("LoginPage");
+                    }
                 }
-            }else{
+            } else {
                 url = action.getProperty("LoginPage");
-                request.setAttribute("message", "Session time out!");
+                request.setAttribute("message", "Login to continued!!!");
             }
-            
-            
+
         } catch (SQLException ex) {
-            ex.printStackTrace();
             LOGGER.error(ex.getMessage());
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

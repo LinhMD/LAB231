@@ -4,22 +4,6 @@
         <filter-name>DispathFilter</filter-name>
         <filter-class>p0014.linhmd.filter.DispathFilter</filter-class>
     </filter>
-    <filter>
-        <filter-name>BeforeUpdateFilter</filter-name>
-        <filter-class>p0014.linhmd.filter.BeforeUpdateFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>BeforeUpdateFilter</filter-name>
-        <url-pattern>/UpdateQuestion.jsp</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>BeforeUpdateFilter</filter-name>
-        <url-pattern>/UpdateQuestion</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>DispathFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -41,6 +25,30 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>p0014.linhmd.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.UpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.CreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BeforeUpdateServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.BeforeUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BeforeChooseSubjectServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.BeforeChooseSubjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrepareQuestionSerlvet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.PrepareQuestionSerlvet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -56,6 +64,30 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/UpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/CreateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BeforeUpdateServlet</servlet-name>
+        <url-pattern>/BeforeUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BeforeChooseSubjectServlet</servlet-name>
+        <url-pattern>/BeforeChooseSubjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrepareQuestionSerlvet</servlet-name>
+        <url-pattern>/PrepareQuestionSerlvet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

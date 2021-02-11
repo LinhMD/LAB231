@@ -25,7 +25,6 @@ public class PropertiesLoader {
             properties.load(fileInputStream);
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
-            e.printStackTrace();
         } finally {
             // close objects
             try {
@@ -34,10 +33,8 @@ public class PropertiesLoader {
                 }
             } catch (IOException e) {
                 LOGGER.error(e.getMessage());
-                e.printStackTrace();
             }
         }
-        
         return properties;
     }
 }

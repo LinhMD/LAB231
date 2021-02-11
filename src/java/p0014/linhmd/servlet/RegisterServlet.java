@@ -39,6 +39,7 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         
         String url = null;
         Properties action = (Properties)this.getServletContext().getAttribute("ACTION");
@@ -55,18 +56,18 @@ public class RegisterServlet extends HttpServlet {
             if(error.isError()){
                 request.setAttribute("registerError", error);
             }else{
+                password = Sha256.encrypt(password);
                 User user = new User(email, username, false);
                 
                 if(new UserDAO().registerNewUser(user, password)){
                     request.setAttribute("message", "Sign up successfully");
-                    
                 }
             }
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             LOGGER.fatal(ex.getMessage());
         } catch (SQLException ex) {
             if(ex.getMessage().contains("duplicate")){
-                error.put("email", "Email already existed!!!");
+                request.setAttribute("message", "Email already existed!!!");
             }else
                 LOGGER.error(ex.getMessage() + " Cause by: " + ex.getCause().toString());
         }finally{
@@ -84,8 +85,6 @@ public class RegisterServlet extends HttpServlet {
             error.put("password", "password can not be empty!!");
         } else if (!password.equals(comfirm)) {
             error.put("comfirm", "Comfirm must match password!!");
-        } else {
-            password = Sha256.encrypt(password);
         }
 
         if (name.trim().isEmpty()) {

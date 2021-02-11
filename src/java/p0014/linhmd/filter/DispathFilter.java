@@ -157,19 +157,15 @@ public class DispathFilter implements Filter {
                 if(resource.contains(".html") || resource.contains(".jsp"))
                     url = resource;
             }else
-                url = action.getProperty("LoginPage");
-            
+                url = action.getProperty("SearchQuestion");
             if(url != null){
-                
                 req.getRequestDispatcher(url).forward(request, response);
             }else{
                 chain.doFilter(request, response);
             }
-            
         }catch(Throwable t){
-            t.printStackTrace();
             LOGGER.error(t.getMessage());
-            t.printStackTrace();
+           
         }
     }
 

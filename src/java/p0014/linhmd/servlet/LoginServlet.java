@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;
-import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,14 +36,14 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
-        String url = null;
+        String url = "LoginPage";
         try{
-            Properties action = (Properties) this.getServletContext().getAttribute("ACTION");
-            url = action.getProperty("LoginPage");
+            
             if(email != null && !email.isEmpty() && password != null && !password.isEmpty()){
                 password = Sha256.encrypt(password);
                 UserDAO userDAO = new UserDAO();
@@ -54,18 +51,21 @@ public class LoginServlet extends HttpServlet {
                 if(user != null){
                     HttpSession session = request.getSession();
                     session.setAttribute("USER", user);
-                    url = action.getProperty("SearchQuestion");
+                    if(user.isAdmin())
+                        url = "SearchQuestion";
+                    else
+                        url = "ChooseSubject";
                 }else{
-                    url = action.getProperty("LoginPage");
-                    request.setAttribute("error", "User ID and password not found!!!");
+                    
+                    request.setAttribute("Message", "User ID and password not found!!!");
                 }
             }else{
-                request.setAttribute("error", "Please enter ID and Password!!!");
+                request.setAttribute("Message", "Please enter ID and Password!!!");
             }
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException | SQLException ex) {
             LOGGER.fatal(ex.getMessage());
         } finally{
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

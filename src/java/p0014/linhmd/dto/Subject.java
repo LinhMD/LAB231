@@ -19,6 +19,14 @@ public class Subject implements Serializable{
     private int time;
     private int limit;
 
+    public Subject(){
+        
+    }
+    
+    public Subject(String code){
+        this.code = code;
+    }
+    
     public Subject(String code, String name, int time, int limit) {
         this.code = code;
         this.name = name;
