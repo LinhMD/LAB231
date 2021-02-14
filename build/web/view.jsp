@@ -105,7 +105,7 @@
                                         <c:param name="content">${param.content}</c:param>
                                         <c:param name="subject">${param.subject}</c:param>
                                     </c:url>
-                                        <a href="${DeleteURL}"  class="btn btn-dark  float-right">${param.status == null? "Remove question" : "Retrive question"}</a>
+                                    <a href="${DeleteURL}"  class="btn btn-dark  float-right" onClick="return confirm('Do you want to '+ ${param.status == null?'remove': 'retrive'} + ' question')">${param.status == null? "Remove question" : "Retrive question"} </a>
                                 </td>
                             </tr>
                         </c:forEach>

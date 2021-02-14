@@ -7,7 +7,9 @@ package p0014.linhmd.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +20,9 @@ import org.apache.log4j.Logger;
 import p0014.linhmd.dao.QuestionDAO;
 import p0014.linhmd.dto.Question;
 import p0014.linhmd.dto.Subject;
+import p0014.linhmd.dto.User;
 import p0014.linhmd.singleton.SubjectList;
+import p0014.linhmd.ultilities.QuizResult;
 
 /**
  *
@@ -37,11 +41,12 @@ public class PrepareQuestionSerlvet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+        String url = "Quiz";
         try{
             String subjectID = request.getParameter("id");
             HttpSession session = request.getSession(false);
             if(session != null){
+                
                 List<Subject> subjects = SubjectList.getInstance();
                 Subject selectedSubject = subjects.get(subjects.indexOf(new Subject(subjectID)));
                 QuestionDAO dao = new QuestionDAO();
@@ -53,14 +58,30 @@ public class PrepareQuestionSerlvet extends HttpServlet {
                         quiz.add(questions.get(i));
                     }
                 }
+                
                 session.setAttribute("QUIZ", quiz);
+                session.setAttribute("QUIZ_SUBJECT", selectedSubject);
+                request.setAttribute("QUESTION", quiz.get(0));
+                
+                User quizTaker = (User) session.getAttribute("USER");
+                QuizResult result = new QuizResult(quizTaker);
+                quiz.forEach(q -> result.put(q, null));
+                session.setAttribute("QUIZ_RESULT", result);
+                
+                Calendar now = Calendar.getInstance();
+                now.add(Calendar.MINUTE, selectedSubject.getTime());
+                Date endTime = now.getTime();
+                session.setAttribute("END_TIME", endTime.getTime());
+                
+            }else{
+                url = "LoginPage";
             }
-        }catch(ArrayIndexOutOfBoundsException | NullPointerException ex){
+        }catch(ArrayIndexOutOfBoundsException | NullPointerException ignored){
            
         }catch(Exception e){
             LOGGER.error(e.getMessage());
         }finally{
-            response.sendRedirect("TakeQuizView");
+            response.sendRedirect(url);
         }
     }
 

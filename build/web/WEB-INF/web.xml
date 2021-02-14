@@ -49,6 +49,10 @@
         <servlet-name>PrepareQuestionSerlvet</servlet-name>
         <servlet-class>p0014.linhmd.servlet.PrepareQuestionSerlvet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TakeQuizServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.TakeQuizServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -88,6 +92,10 @@
     <servlet-mapping>
         <servlet-name>PrepareQuestionSerlvet</servlet-name>
         <url-pattern>/PrepareQuestionSerlvet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeQuizServlet</servlet-name>
+        <url-pattern>/TakeQuizServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

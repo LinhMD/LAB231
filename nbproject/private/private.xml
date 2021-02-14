@@ -19,9 +19,11 @@
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/LoginServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/Login.jsp</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/ultilities/SQLQuery.java</file>
+            <file>file:/E:/Classes/lab231/p0014/web/css/style.css</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/dto/Question.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/ultilities/DBHelpers.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/dao/QuestionDAO.java</file>
+            <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/TakeQuizServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/WEB-INF/Action.properties</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/log4j.properties</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/UpdateServlet.java</file>
@@ -32,6 +34,7 @@
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/BeforeChooseSubjectServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/ChooseSubject.jsp</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/PrepareQuestionSerlvet.java</file>
+            <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/ultilities/QuizResult.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/WEB-INF/web.xml</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/SearchQuestionServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/UpdateQuestion.jsp</file>

@@ -70,3 +70,57 @@ Stacktrace:
 10-Feb-2021 21:54:53.667 ERROR [http-nio-8084-exec-7] (DispathFilter.java:171) - Index: 21, Size: 21
 10-Feb-2021 21:54:58.328 ERROR [http-nio-8084-exec-2] (DispathFilter.java:171) - Index: 21, Size: 21
 11-Feb-2021 20:50:10.888 ERROR [http-nio-8084-exec-34] (DispathFilter.java:167) - /ChooseSubject.jsp (line: 35, column: 20) According to the TLD or the tag file, attribute name is mandatory for tag param
+11-Feb-2021 23:55:19.213 ERROR [http-nio-8084-exec-26] (DispathFilter.java:167) - For input string: ""
+11-Feb-2021 23:55:21.208 ERROR [http-nio-8084-exec-33] (DispathFilter.java:167) - For input string: ""
+11-Feb-2021 23:55:22.386 ERROR [http-nio-8084-exec-24] (DispathFilter.java:167) - For input string: ""
+11-Feb-2021 23:55:23.416 ERROR [http-nio-8084-exec-28] (DispathFilter.java:167) - For input string: ""
+11-Feb-2021 23:55:24.474 ERROR [http-nio-8084-exec-29] (DispathFilter.java:167) - For input string: ""
+11-Feb-2021 23:55:25.451 ERROR [http-nio-8084-exec-30] (DispathFilter.java:167) - For input string: ""
+12-Feb-2021 10:26:17.434 ERROR [http-nio-8084-exec-113] (DispathFilter.java:167) - 
+12-Feb-2021 10:26:22.853 ERROR [http-nio-8084-exec-91] (DispathFilter.java:167) - An exception occurred processing JSP page /TakeQuiz.jsp at line 43
+
+40: 
+41:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+42:                         <label class="options">${requestScope.QUESTION.ansA}
+43:                             <input type="radio" name="ans" value="a" ${requestScope.USER_ANSWER == 'd'? 'checked="checked"' :""}>
+44:                             <span class="checkmark"></span>
+45:                         </label>
+46:                         <hr class="style18">
+
+
+Stacktrace:
+12-Feb-2021 10:27:12.915 ERROR [http-nio-8084-exec-115] (DispathFilter.java:167) - An exception occurred processing JSP page /TakeQuiz.jsp at line 43
+
+40: 
+41:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+42:                         <label class="options">${requestScope.QUESTION.ansA}
+43:                             <input type="radio" name="ans" value="a" ${requestScope.USER_ANSWER == 'a'? 'checked="checked"' :""}>
+44:                             <span class="checkmark"></span>
+45:                         </label>
+46:                         <hr class="style18">
+
+
+Stacktrace:
+12-Feb-2021 11:36:09.253 ERROR [http-nio-8084-exec-151] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:13.223 ERROR [http-nio-8084-exec-152] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:14.108 ERROR [http-nio-8084-exec-155] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:14.976 ERROR [http-nio-8084-exec-153] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:16.818 ERROR [http-nio-8084-exec-154] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:17.642 ERROR [http-nio-8084-exec-148] (DispathFilter.java:178) - 
+12-Feb-2021 11:36:18.990 ERROR [http-nio-8084-exec-147] (DispathFilter.java:178) - 
+12-Feb-2021 17:58:27.016 ERROR [http-nio-8084-exec-11] (DispathFilter.java:178) - An exception occurred processing JSP page /TakeQuiz.jsp at line 29
+
+26:                     <c:forEach var="question" items="${QUIZ}">
+27:                         <li class="nav-item mx-3 mb-4">
+28:                             <c:url var="QuestionLink" value="Quiz">
+29:                                 <c:param name="index" value="${QUIZ.indextOf(question)}"></c:param>
+30:                             </c:url>
+31:                             <a class="btn bg-dark  text-white" style="color: antiquewhite" onClick="return confirm('Do you want to logout?')" href="${QuestionLink}">Logout</a>
+32:                         </li>
+
+
+Stacktrace:
+12-Feb-2021 17:58:53.293 ERROR [http-nio-8084-exec-11] (DispathFilter.java:178) - 
+12-Feb-2021 17:59:40.614 ERROR [http-nio-8084-exec-14] (DispathFilter.java:178) - 
+12-Feb-2021 17:59:45.406 ERROR [http-nio-8084-exec-15] (DispathFilter.java:178) - 
+12-Feb-2021 18:03:06.870 ERROR [http-nio-8084-exec-20] (DispathFilter.java:178) - 

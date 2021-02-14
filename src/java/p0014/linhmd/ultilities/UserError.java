@@ -5,13 +5,14 @@
  */
 package p0014.linhmd.ultilities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  * @author USER
  */
-public class UserError extends HashMap<String, String>{
+public class UserError extends HashMap<String, String> implements Serializable{
     private boolean error = false;
     
     public UserError(){

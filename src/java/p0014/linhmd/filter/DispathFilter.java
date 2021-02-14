@@ -27,7 +27,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import p0014.linhmd.dto.User;
 
 import p0014.linhmd.ultilities.PropertiesLoader;
 
@@ -151,13 +153,22 @@ public class DispathFilter implements Filter {
             String resource = uri.substring(uri.lastIndexOf("/") +1);
             
             Properties action = (Properties)this.filterConfig.getServletContext().getAttribute("ACTION");
-            
+            url = action.getProperty("LoginPage");
             if(resource.length() > 0){
                 url = action.getProperty(resource);
                 if(resource.contains(".html") || resource.contains(".jsp"))
                     url = resource;
-            }else
-                url = action.getProperty("SearchQuestion");
+            }else{
+                HttpSession session = req.getSession(false);
+                if(session != null){
+                    User user  = (User) session.getAttribute("USER");
+                    if(user != null)
+                        if(user.isAdmin())
+                            url = action.getProperty("SearchQuestion");
+                        else
+                            url = action.getProperty("ChooseSubject");
+                }
+            }   
             if(url != null){
                 req.getRequestDispatcher(url).forward(request, response);
             }else{

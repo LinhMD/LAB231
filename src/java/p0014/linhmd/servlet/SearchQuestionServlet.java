@@ -88,7 +88,7 @@ public class SearchQuestionServlet extends HttpServlet {
                         } else {
                             request.setAttribute("QUESTIONS", questions);
                         }
-                        request.setAttribute("SUBJECTS", SubjectList.getInstance());
+                        session.setAttribute("SUBJECTS", SubjectList.getInstance());
                         request.setAttribute("page", pageNum);
                     } else {
                         url = action.getProperty("LoginPage");
