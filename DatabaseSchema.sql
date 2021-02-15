@@ -15,7 +15,8 @@ create table _user
 go
 
 insert into _user(email, name, password, role, status)
-values ('LinhMD', 'Mai Đình Linh', '7568d29c54d0608467453d9bb7375f80ac48e33a6338341769bead34c538f0a6', 1, 1)
+values ('LinhMD', 'Mai Đình Linh', '7568d29c54d0608467453d9bb7375f80ac48e33a6338341769bead34c538f0a6', 1, 1),
+		('User', 'User', '7568d29c54d0608467453d9bb7375f80ac48e33a6338341769bead34c538f0a6', 0, 1)
 									/* password : nah */
 select * from _user
 
@@ -86,3 +87,26 @@ set question_content = '', a = '' , b = '', c = '', d = '', answer_correct = '',
 where id = 1
 
 select max(q.id) + 1 from _question  q
+
+create table _quiz_history
+(
+	id int primary key,
+	quiz_taker nvarchar(255) foreign key references _user(email),
+	subject varchar(10)  foreign key references _subject(code),
+	time date not null,
+	point float not null default 0
+)
+
+create table _quiz_detail
+(
+	quiz_id int not null foreign key references _quiz_history(id),
+	question_id int not null foreign key references _question(id),
+	answer char
+)
+
+insert into _quiz_history(id, quiz_taker, subject, time, point)
+values ((select max(id) from _quiz_history ) + 1, 'User', 'IOT101', '2021-02-15', 5)
+
+select id from _quiz_history 
+
+delete _quiz_history

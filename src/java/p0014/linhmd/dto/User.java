@@ -75,5 +75,9 @@ public class User implements Serializable{
         final User other = (User) obj;
         return Objects.equals(this.email, other.email);
     }
-    
+
+    @Override
+    public String toString() {
+        return email;
+    }
 }

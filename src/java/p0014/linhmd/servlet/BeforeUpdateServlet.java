@@ -43,9 +43,9 @@ public class BeforeUpdateServlet extends HttpServlet {
                 Question question = new QuestionDAO().getQuestionByID(qID);
                 request.setAttribute("UPDATE_QUESTION", question);
                 
-            } catch (IndexOutOfBoundsException | SQLException ex) {
+           } catch (IndexOutOfBoundsException | SQLException ex) {
                 LOGGER.error(ex.getMessage());
-            }finally{
+           }finally{
                request.getRequestDispatcher(action.getProperty("UpdateView")).forward(request, response);
            }
         }

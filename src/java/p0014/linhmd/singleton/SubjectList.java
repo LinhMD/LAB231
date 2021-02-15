@@ -17,7 +17,7 @@ import p0014.linhmd.dto.Subject;
  * @author USER
  */
 public class SubjectList {
-    private static Logger LOGGER;
+    private static final Logger LOGGER;
     
     private static List<Subject> SUBJECTS;
     

@@ -20,17 +20,17 @@ import javax.sql.DataSource;
  */
 public class DBHelpers implements Serializable{
     public static Connection makeConnection() throws ClassNotFoundException, SQLException, NamingException {
-        //1. load driver
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        //2. tao connection String
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=p0014";
-        //3. open connection
-        return DriverManager.getConnection(url, "sa", "123456");
+//        //1. load driver
+//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//        //2. tao connection String
+//        String url = "jdbc:sqlserver://localhost:1433;databaseName=p0014";
+//        //3. open connection
+//        return DriverManager.getConnection(url, "sa", "123456");
         //1.get current context
-//        Context context = new InitialContext();
-//        Context tomcatContext = (Context)context.lookup("java:comp/env");
-//        DataSource da = (DataSource) tomcatContext.lookup("jdbc/p0014");
-//        return da.getConnection();
+        Context context = new InitialContext();
+        Context tomcatContext = (Context)context.lookup("java:comp/env");
+        DataSource da = (DataSource) tomcatContext.lookup("jdbc/p0014");
+        return da.getConnection();
         
     }
 

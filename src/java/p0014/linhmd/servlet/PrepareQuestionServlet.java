@@ -22,14 +22,14 @@ import p0014.linhmd.dto.Question;
 import p0014.linhmd.dto.Subject;
 import p0014.linhmd.dto.User;
 import p0014.linhmd.singleton.SubjectList;
-import p0014.linhmd.ultilities.QuizResult;
+import p0014.linhmd.dto.QuizResult;
 
 /**
  *
  * @author USER
  */
-public class PrepareQuestionSerlvet extends HttpServlet {
-    private static final Logger LOGGER = Logger.getLogger(PrepareQuestionSerlvet.class);
+public class PrepareQuestionServlet extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(PrepareQuestionServlet.class);
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -64,8 +64,11 @@ public class PrepareQuestionSerlvet extends HttpServlet {
                 request.setAttribute("QUESTION", quiz.get(0));
                 
                 User quizTaker = (User) session.getAttribute("USER");
-                QuizResult result = new QuizResult(quizTaker);
-                quiz.forEach(q -> result.put(q, null));
+                QuizResult result = new QuizResult(0,
+                                            quizTaker.getEmail(),
+                                            selectedSubject.getCode(),
+                                            Calendar.getInstance().getTime());
+                quiz.forEach(q -> result.put(q, 'z'));
                 session.setAttribute("QUIZ_RESULT", result);
                 
                 Calendar now = Calendar.getInstance();

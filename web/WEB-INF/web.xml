@@ -46,12 +46,16 @@
         <servlet-class>p0014.linhmd.servlet.BeforeChooseSubjectServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PrepareQuestionSerlvet</servlet-name>
-        <servlet-class>p0014.linhmd.servlet.PrepareQuestionSerlvet</servlet-class>
+        <servlet-name>PrepareQuestionServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.PrepareQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TakeQuizServlet</servlet-name>
         <servlet-class>p0014.linhmd.servlet.TakeQuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.SubmitServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -90,12 +94,16 @@
         <url-pattern>/BeforeChooseSubjectServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PrepareQuestionSerlvet</servlet-name>
-        <url-pattern>/PrepareQuestionSerlvet</url-pattern>
+        <servlet-name>PrepareQuestionServlet</servlet-name>
+        <url-pattern>/PrepareQuestionServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TakeQuizServlet</servlet-name>
         <url-pattern>/TakeQuizServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitServlet</servlet-name>
+        <url-pattern>/SubmitServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -26,7 +26,7 @@
                 <h3 class="nav justify-content-end" id="timer" ></h3>
                 <hr class="style18">
                 <ul class="nav d-flex align-content-start flex-wrap">
-                    <c:forEach var="question" items="${QUIZ}" varStatus="count">
+                    <c:forEach var="question" items="${sessionScope.QUIZ}" varStatus="count">
                         <li class="nav-item mx-3 mb-4">
                             <c:url var="QuestionLink" value="Quiz">
                                 <c:param name="index" value="${count.index}">${count.index}</c:param>
@@ -81,28 +81,27 @@
     </body>
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date(${sessionScope.END_TIME}).getTime();
+let countDownDate = new Date(${sessionScope.END_TIME}).getTime();
 
 // Update the count down every 1 second
-var x = setInterval(function() {
-  // Get today's date and time
-  var now = new Date().getTime();
+let x = setInterval(function () {
+    // Get today's date and time
+    let now = new Date().getTime();
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+    // Find the distance between now and the count down date
+    let distance = countDownDate - now;
 
-  // Time calculations for days, hours, minutes and seconds
-  var minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
-  document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
+    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "EXPIRED";
-  }
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
+    }
 }, 1000);
 </script>
 </html>

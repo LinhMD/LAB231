@@ -40,24 +40,23 @@ public class Question implements Serializable{
 
     public Question(int id, String content, String ansA, String ansB, String ansC, String ansD, char correct, String subjectID) {
         this.id = id;
-        this.content = content;
-        this.ansA = ansA;
-        this.ansB = ansB;
-        this.ansC = ansC;
-        this.ansD = ansD;
+        this.content = content.trim();
+        this.ansA = ansA.trim();
+        this.ansB = ansB.trim();
+        this.ansC = ansC.trim();
+        this.ansD = ansD.trim();
         this.correct = correct;
         this.createDate = Calendar.getInstance().getTime();
         this.subjectID = subjectID;
     }
 
     public Question(List<String> data) {
-        
         this.id = Integer.parseInt(data.get(0));
-        this.content = data.get(1);
-        this.ansA = data.get(2);
-        this.ansB = data.get(3);
-        this.ansC = data.get(4);
-        this.ansD = data.get(5);
+        this.content = data.get(1).trim();
+        this.ansA = data.get(2).trim();
+        this.ansB = data.get(3).trim();
+        this.ansC = data.get(4).trim();
+        this.ansD = data.get(5).trim();
         this.correct = data.get(6).charAt(0);
 
         try {

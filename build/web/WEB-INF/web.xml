@@ -47,7 +47,7 @@
     </servlet>
     <servlet>
         <servlet-name>PrepareQuestionSerlvet</servlet-name>
-        <servlet-class>p0014.linhmd.servlet.PrepareQuestionSerlvet</servlet-class>
+        <servlet-class>p0014.linhmd.servlet.PrepareQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TakeQuizServlet</servlet-name>

@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import p0014.linhmd.dto.Question;
-import p0014.linhmd.dto.User;
-import p0014.linhmd.ultilities.QuizResult;
+import p0014.linhmd.dto.QuizResult;
 
 /**
  *

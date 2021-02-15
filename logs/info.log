@@ -124,3 +124,11 @@ Stacktrace:
 12-Feb-2021 17:59:40.614 ERROR [http-nio-8084-exec-14] (DispathFilter.java:178) - 
 12-Feb-2021 17:59:45.406 ERROR [http-nio-8084-exec-15] (DispathFilter.java:178) - 
 12-Feb-2021 18:03:06.870 ERROR [http-nio-8084-exec-20] (DispathFilter.java:178) - 
+15-Feb-2021 15:25:10.799 ERROR [http-nio-8080-exec-6] (DispathFilter.java:178) - 
+15-Feb-2021 15:28:13.243 ERROR [http-nio-8080-exec-3] (SubmitServlet.java:31) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:28:44.972 ERROR [http-nio-8080-exec-6] (SubmitServlet.java:31) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:29:08.158 ERROR [http-nio-8080-exec-9] (SubmitServlet.java:31) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:29:44.683 ERROR [http-nio-8080-exec-10] (SubmitServlet.java:32) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:32:39.031 ERROR [http-nio-8080-exec-10] (SubmitServlet.java:32) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:35:17.888 ERROR [http-nio-8080-exec-4] (SubmitServlet.java:32) - The conversion from UNKNOWN to UNKNOWN is unsupported.
+15-Feb-2021 15:36:54.783 ERROR [http-nio-8080-exec-8] (SubmitServlet.java:32) - Invalid object name '_quiz_detail'.
