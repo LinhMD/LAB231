@@ -14,6 +14,7 @@
             <file>file:/E:/Classes/lab231/p0014/web/TakeQuiz.jsp</file>
             <file>file:/E:/Classes/lab231/p0014/web/META-INF/context.xml</file>
             <file>file:/E:/Classes/lab231/p0014/web/QuizHistory.jsp</file>
+            <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/filter/UserFilter.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/QuizHistoryServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/singleton/SubjectList.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/filter/DispathFilter.java</file>
@@ -32,6 +33,7 @@
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/dto/Subject.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/LogoutServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/CreateServlet.java</file>
+            <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/filter/AdminFIlter.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/ultilities/UserError.java</file>
             <file>file:/E:/Classes/lab231/p0014/src/java/p0014/linhmd/servlet/BeforeChooseSubjectServlet.java</file>
             <file>file:/E:/Classes/lab231/p0014/web/ChooseSubject.jsp</file>
