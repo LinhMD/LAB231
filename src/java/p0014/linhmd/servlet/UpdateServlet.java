@@ -84,7 +84,7 @@ public class UpdateServlet extends HttpServlet {
         } else if (content.trim().length() == 0) {
             error.put("content", "Question content can not be empty");
         } else if (content.trim().length() > 2048) {
-            error.put("content", "Question content to long (> 1024 char)");
+            error.put("content", "Question content to long (> 2048 char)");
         }
 
         List<String> answers = new ArrayList<>();

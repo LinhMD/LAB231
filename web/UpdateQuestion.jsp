@@ -41,7 +41,7 @@
                     <label for="content" class="font-weight-bold text-white">${requestScope.message}</label>
                 </div>
             </c:if>
-            <form action="Update" method="POST">
+            <form action="Update" method="POST" onsubmit="return confirm('Do you want to update?')">
                 <input type="hidden" name="id" value="${requestScope.UPDATE_QUESTION.id}" />
                 <div class="content">
                     <div class="container form-group p-3 d-flex flex-column bg-dark rounded" >
@@ -95,7 +95,7 @@
                 </div>
                 <hr class="style18">
                 <div class="form-group d-flex justify-content-center">
-                    <input type="submit" value="Update Question" class="btn bg-dark text-white justify-content-left m-3">
+                    <input type="submit" value="Update Question"  class="btn bg-dark text-white justify-content-left m-3">
                     <a class="btn bg-dark m-3 text-white justify-content-right" href="#">Back to Question Bank</a>
                 </div>
             </form>

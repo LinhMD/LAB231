@@ -25,6 +25,9 @@
                     <li class="nav-item mx-3 mb-4">
                         <a class="btn bg-dark  text-white" style="color: antiquewhite" onClick="return confirm('Do you want to logout?')" href="Logout">Logout</a>
                     </li>
+                    <li class="nav-item mx-3 mb-4">
+                        <a class="btn bg-dark  text-white" style="color: antiquewhite"  href="B4QuizHistory">Quiz history</a>
+                    </li>
                 </ul>
             </div>
         </div>

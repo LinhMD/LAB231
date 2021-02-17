@@ -53,12 +53,12 @@
                 </div>
                 <div class="register-show">
                     <h2>REGISTER</h2>
-                    <p style="color: orangered">${message}</p>
+                    <p style="color: orangered">${requestScope.regisMessage}</p>
                     <form action="Register" method="POST">
-                        <input type="text" placeholder="${registerError.email == null? "Email" : registerError.email}" name="email" value="${param.email}">                        
+                        <input type="text" placeholder="${registerError.email == null? "Email" : registerError.email}" name="email" value="${requestScope.email}">
                         <input type="password" placeholder="${registerError.password == null? "password" : registerError.password}" name="password" >                        
                         <input type="password" placeholder="${registerError.comfirm == null? "Comfirm password" : registerError.comfirm}" name="comfirm">                      
-                        <input type="text" placeholder="${registerError.name == null? "Name" : registerError.name}" name="username" value="${param.username}">
+                        <input type="text" placeholder="${registerError.name == null? "Name" : registerError.name}" name="username" value="${requestScope.username}">
                         <input type="submit" name="btnAction"value="Register">
                     </form>
                 </div>

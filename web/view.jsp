@@ -24,6 +24,9 @@
                     <li class="nav-item mx-3">
                         <a class="btn bg-dark text-white mb-4 justify-content-right" href="CreateView">Create Question</a>
                     </li>
+                    <li class="nav-item mx-3">
+                        <a href="CreateView"  class="btn bg-dark mb-4 text-white" >+Add New</a>
+                    </li>
                     <li class="nav-item "mx-3>
                         <a class="btn bg-dark text-white mb-4" style="color: antiquewhite" onClick="return confirm('Do you want to logout?')" href="Logout">Logout</a>
                     </li>
@@ -35,7 +38,7 @@
             <form action="SearchQuestion" class=" my-3 py-3 rounded" style="background-color: #222831" method="post">
                 <input type="hidden" name="pageNum" value="${requestScope.page}">
                 <div class="container d-flex justify-content-center ">
-                    <label class="mx-3">
+                    <label c="mx-3">lass
                         <select class=" form-control mdb-select md-form   active-cyan" name="subject">
                             <option value="">------All Subject------</option>
                             <c:forEach var="subject" items="${SUBJECTS}">

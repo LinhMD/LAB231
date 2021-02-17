@@ -22,7 +22,7 @@
                 <hr class="style18">
                 <ul class="nav d-flex flex-row-reverse mb-4">
                     <li class="nav-item mx-3 mb-4">
-                        <a class="btn bg-dark text-white justify-content-right" href="#">Back to Question Bank</a>
+                        <a class="btn bg-dark text-white justify-content-right" href="SearchQuestion">Back to Question Bank</a>
                     </li>
                     <li class="nav-item mx-3 mb-4">
                         <a class="btn bg-dark  text-white" style="color: antiquewhite" onClick="return confirm('Do you want to logout?')" href="Logout">Logout</a>

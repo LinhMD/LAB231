@@ -45,10 +45,10 @@ public class RegisterServlet extends HttpServlet {
         Properties action = (Properties)this.getServletContext().getAttribute("ACTION");
         url = action.getProperty("LoginPage");
         
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String comfirm = request.getParameter("comfirm");
-        String username = request.getParameter("username");
+        String email = request.getParameter("email").trim();
+        String password = request.getParameter("password").trim();
+        String comfirm = request.getParameter("comfirm").trim();
+        String username = request.getParameter("username").trim();
         UserError error = new UserError();
         try  {
             this.validate(email, password, comfirm, username, error);
@@ -60,16 +60,22 @@ public class RegisterServlet extends HttpServlet {
                 User user = new User(email, username, false);
                 
                 if(new UserDAO().registerNewUser(user, password)){
-                    request.setAttribute("message", "Sign up successfully");
+                    request.setAttribute("regisMessage", "Sign up successfully");
+                    request.setAttribute("email", email);
+                    request.setAttribute("username" , username);
                 }
             }
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             LOGGER.fatal(ex.getMessage());
         } catch (SQLException ex) {
             if(ex.getMessage().contains("duplicate")){
-                request.setAttribute("message", "Email already existed!!!");
+                request.setAttribute("regisMessage", "Email already existed!!!");
             }else
                 LOGGER.error(ex.getMessage() + " Cause by: " + ex.getCause().toString());
+        } catch (NullPointerException ignore){
+
+        }catch (Exception e){
+            LOGGER.error(e.getMessage());
         }finally{
             request.setAttribute("isSignUp", true);
             request.getRequestDispatcher(url).forward(request, response);
@@ -79,17 +85,21 @@ public class RegisterServlet extends HttpServlet {
     private void validate(String email, String password, String comfirm, String name, UserError error) throws UnsupportedEncodingException, NoSuchAlgorithmException{
         if (email.trim().isEmpty()) {
             error.put("email", "email can not be empty!!");
-        }
+        }else if(email.trim().length() > 255)
+            error.put("email", "Email too long");
 
         if (password.trim().isEmpty()) {
             error.put("password", "password can not be empty!!");
+        }else if(password.trim().length() < 2){
+            error.put("password", "password too short!!");
         } else if (!password.equals(comfirm)) {
             error.put("comfirm", "Comfirm must match password!!");
         }
 
         if (name.trim().isEmpty()) {
             error.put("name", "Name can not be empty!!");
-        }
+        }else if(name.trim().length() > 50)
+            error.put("name", "Name too long!!");
             
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -26,7 +26,10 @@
                     <a class="btn bg-dark  text-white" style="color: antiquewhite" onClick="return confirm('Do you want to logout?')" href="Logout">Logout</a>
                 </li>
                 <li class="nav-item mx-3 mb-4">
-                    <p class="btn bg-dark  text-white">Point: ${requestScope.QUIZ_RESULT.getPoint()}</p>
+                    <a class="btn bg-dark  text-white" style="color: antiquewhite"  href="ChooseSubject">Choose quiz subject</a>
+                </li>
+                <li class="nav-item mx-3 mb-4">
+                    <p class="btn bg-dark text-white">Point: ${requestScope.QUIZ_RESULT.getPoint()}</p>
                 </li>
             </ul>
         </div>
