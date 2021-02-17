@@ -60,7 +60,8 @@ public class TakeQuizServlet extends HttpServlet {
                             i++;
                         }else if(btn.equals("Previous") && i > 0){
                             i--;
-                        }
+                        }else if(btn.equals("Submit"))
+                            url = action.getProperty("Submit");
                     }
                     Question nextQuestion = quiz.get(i);
                     request.setAttribute("index", i);

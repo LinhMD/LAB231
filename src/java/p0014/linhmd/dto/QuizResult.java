@@ -5,16 +5,17 @@
  */
 package p0014.linhmd.dto;
 
+import org.apache.log4j.Logger;
+import p0014.linhmd.dao.QuestionDAO;
+
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
-
-import org.apache.log4j.Logger;
-import p0014.linhmd.dao.QuestionDAO;
-import p0014.linhmd.dto.Question;
-import p0014.linhmd.dto.User;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
 
 /**
  *

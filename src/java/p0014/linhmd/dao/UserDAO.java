@@ -5,11 +5,11 @@
  */
 package p0014.linhmd.dao;
 
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Vector;
 import p0014.linhmd.dto.User;
 import p0014.linhmd.ultilities.SQLQuery;
+
+import java.sql.SQLException;
+import java.util.Vector;
 
 /**
  *

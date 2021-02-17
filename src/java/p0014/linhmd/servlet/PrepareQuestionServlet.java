@@ -6,6 +6,7 @@
 package p0014.linhmd.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import p0014.linhmd.dao.QuestionDAO;
+import p0014.linhmd.dao.QuizDAO;
 import p0014.linhmd.dto.Question;
 import p0014.linhmd.dto.Subject;
 import p0014.linhmd.dto.User;
@@ -73,9 +75,26 @@ public class PrepareQuestionServlet extends HttpServlet {
                 
                 Calendar now = Calendar.getInstance();
                 now.add(Calendar.MINUTE, selectedSubject.getTime());
+
                 Date endTime = now.getTime();
                 session.setAttribute("END_TIME", endTime.getTime());
-                
+                Thread thread = new Thread(() -> {
+                    try {
+                        Thread.sleep(60000 * selectedSubject.getTime() + 5000);
+                        QuizResult quizResult = (QuizResult) session.getAttribute("QUIZ_RESULT");
+                        if(quizResult != null){
+                            QuizDAO quizDAO = new QuizDAO();
+                            quizDAO.insertQuizResult(quizResult);
+                            session.removeAttribute("QUIZ");
+                            session.removeAttribute("END_TIME");
+                            session.removeAttribute("QUIZ_RESULT");
+                            session.removeAttribute("QUIZ_SUBJECT");
+                        }
+                    } catch (InterruptedException | SQLException e) {
+                        LOGGER.error(e.getMessage());
+                    }
+                });
+                thread.start();
             }else{
                 url = "LoginPage";
             }

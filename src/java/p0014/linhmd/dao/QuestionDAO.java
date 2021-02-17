@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class QuestionDAO {
 
     private static final Logger LOGGER = Logger.getLogger(QuestionDAO.class);
-    public static final int PAGE_LENGTH = 21;
+    public static final int PAGE_LENGTH = 11;
 
     public List<Question> getQuestion(int page, String subject, String content, int status) throws SQLException {
         String sql = "select q.id, q.question_content, q.a, q.b, q.c, q.d, q.answer_correct, q.create_date, q.subjectID \n"

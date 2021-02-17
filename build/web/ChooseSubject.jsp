@@ -34,7 +34,7 @@
                 <c:url var="TakeQuiz" value="Prepare">
                     <c:param name="id" >${subject.code}</c:param>
                 </c:url>
-                <a href="${TakeQuiz}"  class="btn btn-dark container p-3 m-3 flex-colum">
+                <a href="${TakeQuiz}"  class="btn btn-dark container p-3 m-3 flex-column">
                     <div class="container d-flex justify-content-between">
                         <b>${subject.code}</b>
                         <p>

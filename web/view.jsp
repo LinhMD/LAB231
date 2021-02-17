@@ -33,6 +33,7 @@
                 
         <div class="container p-5  rounded " style="background-color: grey">
             <form action="SearchQuestion" class=" my-3 py-3 rounded" style="background-color: #222831" method="post">
+                <input type="hidden" name="pageNum" value="${requestScope.page}">
                 <div class="container d-flex justify-content-center ">
                     <label class="mx-3">
                         <select class=" form-control mdb-select md-form   active-cyan" name="subject">

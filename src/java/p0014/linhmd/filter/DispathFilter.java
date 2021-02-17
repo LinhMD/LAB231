@@ -165,8 +165,13 @@ public class DispathFilter implements Filter {
                     if(user != null)
                         if(user.isAdmin())
                             url = action.getProperty("SearchQuestion");
-                        else
-                            url = action.getProperty("ChooseSubject");
+                        else{
+                            if(session.getAttribute("QUIZ_RESULT") != null)
+                                url = action.getProperty("TakeQuizView");
+                            else
+                                url = action.getProperty("ChooseSubject");
+                        }
+
                 }
             }   
             if(url != null){

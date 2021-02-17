@@ -23,18 +23,21 @@
                 <hr class="style18">
                 <h3 class="nav justify-content-end" >Hello ${sessionScope.USER.name}</h3>
                 <hr class="style18">
-                <h3 class="nav justify-content-end" id="timer" ></h3>
+                <div class="nav justify-content-end">
+                    <h3 class="nav-item justify-content-end mx-3" id="timer" ></h3>
+                    <button class="nav-item btn btn-dark mx-3 text-white" id="Submit" onclick="submit()">Submit</button>
+                </div>
+
                 <hr class="style18">
                 <ul class="nav d-flex align-content-start flex-wrap">
-                    <c:forEach var="question" items="${QUIZ}" varStatus="count">
+                    <c:forEach var="question" items="${sessionScope.QUIZ}" varStatus="count">
                         <li class="nav-item mx-3 mb-4">
                             <c:url var="QuestionLink" value="Quiz">
-                                <c:param name="index" value="${count.index}"></c:param>
+                                <c:param name="index" value="${count.index}">${count.index}</c:param>
                             </c:url>
-                            <a class="btn bg-dark  text-white" style="color: antiquewhite"  href="${QuestionLink}">${count.index}</a>
+                            <a class="btn ${sessionScope.QUIZ_RESULT.get(question) != 'z'.charAt(0)? "btn-dark": "btn-warning"}  text-white" style="color: antiquewhite"  href="${QuestionLink}">${count.index +1}</a>
                         </li>
                     </c:forEach>
-                    
                 </ul>
             </div>
         </div>
@@ -73,36 +76,39 @@
                 </div>
                 <div class="d-flex  pt-3 justify-content-between">
                     <input type="submit" class="btn btn-dark " id="prev" name="btnAction" value="Previous">
-                    <input type="submit" class="btn btn-dark " name="btnAction" value="Next">
+                    <input type="submit" class="btn btn-dark " id="next" name="btnAction" value="${requestScope.index + 1 != sessionScope.QUIZ.size()? 'Next' :'Submit'}">
                 </div>
             </form>
         </div>
-                    
     </body>
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date(${sessionScope.END_TIME}).getTime();
+let countDownDate = new Date(${sessionScope.END_TIME}).getTime();
 
 // Update the count down every 1 second
-var x = setInterval(function() {
-  // Get today's date and time
-  var now = new Date().getTime();
+let x = setInterval(function () {
+    // Get today's date and time
+    let now = new Date().getTime();
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+    // Find the distance between now and the count down date
+    let distance = countDownDate - now;
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Time calculations for days, hours, minutes and seconds
-  var minutes = Math.floor((distance % (1000 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
 
-  document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "EXPIRED";
-  }
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("Submit").click();
+    }
 }, 1000);
+
+function submit() {
+    document.getElementById("next").value = "Submit";
+    document.getElementById("next").click();
+}
 </script>
 </html>

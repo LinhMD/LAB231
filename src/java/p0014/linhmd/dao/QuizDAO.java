@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class QuizDAO {
 
+	public static final int PAGE_LENGTH = 5;
+
 	public int getMaxID(){
 		String sql = "select max(id) from _quiz_history";
 		try{
@@ -21,11 +23,24 @@ public class QuizDAO {
 
 	}
 
-	public List<QuizResult> getQuizResultOfUser(String email) throws SQLException {
+	public QuizResult getQuizResult(int id) throws SQLException {
 		String sql = "select id, quiz_taker, subject, time, point \n" +
 				"from _quiz_history\n" +
-				"where quiz_taker = ?";
-		Vector<Vector<String>> vectors = SQLQuery.executeQuery(sql, email);
+				"where id = ?";
+		QuizResult result = new QuizResult(SQLQuery.executeQuery(sql, id).get(0));
+		sql = "select question_id, answer from _quiz_detail\n" +
+				"where quiz_id = ?";
+		result.addAllResult(SQLQuery.executeQuery(sql, id));
+		return result;
+	}
+
+	public List<QuizResult> getQuizResultsOfUser(String email, int page) throws SQLException {
+		String sql = "select id, quiz_taker, subject, time, point \n" +
+				"from _quiz_history\n" +
+				"where quiz_taker = ? \n"+
+				"order by time\n" +
+				"offset ? row fetch next " + PAGE_LENGTH + " row only \n";
+		Vector<Vector<String>> vectors = SQLQuery.executeQuery(sql, email, page * PAGE_LENGTH);
 		List<QuizResult> results = vectors.stream().map(QuizResult::new).collect(Collectors.toList());
 		sql = "select question_id, answer from _quiz_detail\n" +
 				"where quiz_id = ?";
@@ -47,6 +62,4 @@ public class QuizDAO {
 			}
 		}
 	}
-
-
 }

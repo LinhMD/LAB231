@@ -4,6 +4,74 @@
         <filter-name>DispathFilter</filter-name>
         <filter-class>p0014.linhmd.filter.DispathFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>AdminFIlter</filter-name>
+        <filter-class>p0014.linhmd.filter.AdminFIlter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>UserFilter</filter-name>
+        <filter-class>p0014.linhmd.filter.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>BeforeChooseSubjectServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>PrepareQuestionServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>SubmitServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>BeforeQuizHistoryServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserFilter</filter-name>
+        <servlet-name>QuizHistoryServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFIlter</filter-name>
+        <servlet-name>BeforeUpdateServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFIlter</filter-name>
+        <servlet-name>DeleteServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFIlter</filter-name>
+        <servlet-name>CreateServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFIlter</filter-name>
+        <servlet-name>UpdateServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFIlter</filter-name>
+        <servlet-name>SearchQuestionServlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>DispathFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -46,13 +114,33 @@
         <servlet-class>p0014.linhmd.servlet.BeforeChooseSubjectServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PrepareQuestionSerlvet</servlet-name>
+        <servlet-name>PrepareQuestionServlet</servlet-name>
         <servlet-class>p0014.linhmd.servlet.PrepareQuestionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TakeQuizServlet</servlet-name>
         <servlet-class>p0014.linhmd.servlet.TakeQuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.SubmitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BeforeQuizHistoryServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.BeforeQuizHistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizHistoryServlet</servlet-name>
+        <servlet-class>p0014.linhmd.servlet.QuizHistoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QuizHistoryServlet</servlet-name>
+        <url-pattern>/QuizHistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BeforeQuizHistoryServlet</servlet-name>
+        <url-pattern>/BeforeQuizHistoryServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -90,12 +178,16 @@
         <url-pattern>/BeforeChooseSubjectServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PrepareQuestionSerlvet</servlet-name>
-        <url-pattern>/PrepareQuestionSerlvet</url-pattern>
+        <servlet-name>PrepareQuestionServlet</servlet-name>
+        <url-pattern>/PrepareQuestionServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TakeQuizServlet</servlet-name>
         <url-pattern>/TakeQuizServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitServlet</servlet-name>
+        <url-pattern>/SubmitServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

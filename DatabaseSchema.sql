@@ -30,11 +30,8 @@ create table _subject
 go
 
 insert into _subject (code, name, question_limit, time)
-values ('IOT101', 'Internet of Things', 50, 60),
-		('SSG101', 'Working in Group Skills', 50, 60),
-		('CSI101', 'Connecting to Computer Science', 50, 60),
-		('PRF192', 'Programming Fundamentals', 50, 60),
-		('MAE101', 'Mathematics for Engineering', 50, 60)
+values ('IOT101', 'Internet of Things', 10, 10),
+		('SSG101', 'Working in Group Skills', 10, 10)
 
 
 create table _question 
@@ -74,19 +71,32 @@ values (1, '1', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101'),
 		(20, '20', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101'),
 		(21, '21', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101'),
 		(22, '22', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101'),
-		(23, '23', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101')
+		(23, '23', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'IOT101'),
+		(24, '1', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(25, '2', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(26, '3', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(27, '4', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(28, '5', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(29, '6', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(30, '7', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(31, '8', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(32, '9', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(33, '10', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(34, '11', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(35, '12', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(36, '13', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(37, '14', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(38, '15', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(39, '16', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(40, '17', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(41, '18', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(42, '19', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(43, '20', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(44, '21', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(45, '22', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101'),
+		(46, '23', 'a', 'b', 'c', 'd' , 'a', '2021-05-02', 'SSG101')
 
-select q.id, q.question_content, q.a, q.b, q.c, q.d, q.answer_correct, q.create_date, q.subjectID 
-from _question q
-where q.status = 1
-order by id
-offset 0 row fetch next 20 row only
 
-update _question
-set question_content = '', a = '' , b = '', c = '', d = '', answer_correct = '', subjectID = ''
-where id = 1
-
-select max(q.id) + 1 from _question  q
 
 create table _quiz_history
 (
@@ -101,12 +111,6 @@ create table _quiz_detail
 (
 	quiz_id int not null foreign key references _quiz_history(id),
 	question_id int not null foreign key references _question(id),
-	answer char
+	answer char,
+	primary key (quiz_id, question_id)
 )
-
-insert into _quiz_history(id, quiz_taker, subject, time, point)
-values ((select max(id) from _quiz_history ) + 1, 'User', 'IOT101', '2021-02-15', 5)
-
-select id from _quiz_history 
-
-delete _quiz_history
