@@ -1,2 +1,133 @@
-17-Feb-2021 15:42:56.118 ERROR [http-nio-8080-exec-6] (BeforeQuizHistoryServlet.java:62) - Must declare the scalar variable "@P0order".
-17-Feb-2021 15:43:39.091 ERROR [http-nio-8080-exec-9] (BeforeQuizHistoryServlet.java:62) - Must declare the scalar variable "@P0order".
+22-Feb-2021 19:17:59.078 ERROR [main] (Question.java:59) - Unparseable date: "IOT101"
+22-Feb-2021 19:19:21.534 ERROR [main] (Question.java:58) - Unparseable date: "IOT101"
+22-Feb-2021 19:27:38.859 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:38.886 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:38.911 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:38.944 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:38.973 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.002 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.071 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.110 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.138 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.168 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.195 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.221 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.247 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.293 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.332 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.365 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.394 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.431 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.455 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.474 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.493 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.524 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.554 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:27:39.577 ERROR [main] (Question.java:60) - Invalid object name '_answer'.
+22-Feb-2021 19:28:08.998 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.027 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.057 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.084 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.115 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.145 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.198 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.233 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.300 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.327 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.353 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.377 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.437 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.523 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.545 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.566 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.584 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.605 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.631 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.690 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.732 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.766 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.789 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 19:28:09.812 ERROR [main] (Question.java:61) - Invalid object name '_answer'.
+22-Feb-2021 21:02:23.300 ERROR [http-nio-8080-exec-5] (DispathFilter.java:183) - javax.el.PropertyNotFoundException: Property [ansA] not found on type [p0014.linhmd.dto.Question]
+23-Feb-2021 08:12:57.421 ERROR [http-nio-8080-exec-5] (DispathFilter.java:183) - An exception occurred processing [/TakeQuiz.jsp] at line [58]
+
+55:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+56:                         <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+57:                             <label class="options">${answer}
+58:                                 <input type="radio" name="ans" value=&#${loop.index + 'a'}" ${requestScope.USER_ANSWER == (loop.index + 'a')? 'checked="checked"' :""}>
+59:                                 <span class="checkmark"></span>
+60:                             </label>
+61:                         </c:forEach>
+
+
+Stacktrace:
+23-Feb-2021 08:14:35.928 ERROR [http-nio-8080-exec-10] (DispathFilter.java:183) - An exception occurred processing [/TakeQuiz.jsp] at line [58]
+
+55:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+56:                         <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+57:                             <label class="options">${answer}
+58:                                 <input type="radio" name="ans" value=&#${loop.index + 97}" ${requestScope.USER_ANSWER == (loop.index + 'a')? 'checked="checked"' :""}>
+59:                                 <span class="checkmark"></span>
+60:                             </label>
+61:                         </c:forEach>
+
+
+Stacktrace:
+23-Feb-2021 08:14:39.140 ERROR [http-nio-8080-exec-3] (DispathFilter.java:183) - An exception occurred processing [/TakeQuiz.jsp] at line [58]
+
+55:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+56:                         <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+57:                             <label class="options">${answer}
+58:                                 <input type="radio" name="ans" value=&#${loop.index + 97}" ${requestScope.USER_ANSWER == (loop.index + 'a')? 'checked="checked"' :""}>
+59:                                 <span class="checkmark"></span>
+60:                             </label>
+61:                         </c:forEach>
+
+
+Stacktrace:
+23-Feb-2021 08:21:33.717 ERROR [http-nio-8080-exec-3] (SubmitServlet.java:39) - Invalid object name '_quiz_history'.
+23-Feb-2021 09:43:19.104 ERROR [http-nio-8080-exec-8] (DispathFilter.java:183) - javax.el.ELException: Cannot convert [77] of type [class p0014.linhmd.dto.Answer] to [class java.lang.Long]
+23-Feb-2021 09:44:54.277 ERROR [http-nio-8080-exec-1] (DispathFilter.java:183) - javax.el.ELException: Cannot convert [77] of type [class p0014.linhmd.dto.Answer] to [class java.lang.Long]
+23-Feb-2021 09:45:18.306 ERROR [http-nio-8080-exec-5] (DispathFilter.java:183) - javax.el.ELException: Cannot convert [53] of type [class p0014.linhmd.dto.Answer] to [class java.lang.Long]
+23-Feb-2021 09:46:46.296 ERROR [http-nio-8080-exec-8] (DispathFilter.java:183) - An exception occurred processing [/TakeQuiz.jsp] at line [58]
+
+55:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+56:                         <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+57:                             <label class="options">${answer.content}
+58:                                 <input type="radio" name="ans" value=&#${loop.index + 97}" ${requestScope.USER_ANSWER == (loop.index + 97)? 'checked="checked"' :""}>
+59:                                 <span class="checkmark"></span>
+60:                             </label>
+61:                         </c:forEach>
+
+
+Stacktrace:
+23-Feb-2021 09:47:11.617 ERROR [http-nio-8080-exec-10] (DispathFilter.java:183) - An exception occurred processing [/TakeQuiz.jsp] at line [58]
+
+55:                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
+56:                         <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+57:                             <label class="options">${answer.content}
+58:                                 <input type="radio" name="ans" value=&#${loop.index + 97}" ${requestScope.USER_ANSWER == (loop.index + 97)? 'checked="checked"' :""}>
+59:                                 <span class="checkmark"></span>
+60:                             </label>
+61:                         </c:forEach>
+
+
+Stacktrace:
+23-Feb-2021 09:49:46.584 ERROR [http-nio-8080-exec-6] (SubmitServlet.java:39) - Invalid column name 'answer'.
+23-Feb-2021 09:50:54.054 ERROR [http-nio-8080-exec-9] (BeforeQuizHistoryServlet.java:61) - Invalid column name 'answer'.
+23-Feb-2021 09:53:33.698 ERROR [http-nio-8080-exec-6] (SubmitServlet.java:39) - Invalid column name 'answer'.
+23-Feb-2021 09:57:34.016 ERROR [http-nio-8080-exec-1] (SubmitServlet.java:39) - Invalid column name 'answer'.
+23-Feb-2021 10:01:34.513 ERROR [http-nio-8080-exec-1] (DispathFilter.java:183) - An exception occurred processing [/QuizResult.jsp] at line [44]
+
+41:                 <hr class="style18">
+42:                 <p>
+43:                     <c:forEach var="answer" items="${question.key.answers}" varStatus="loop">
+44:                         &#${loop + 97}) ${answer} <br/>
+45:                     </c:forEach>
+46:                 </p>
+47:                 <hr class="style18">
+
+
+Stacktrace:
+23-Feb-2021 10:08:20.515 ERROR [http-nio-8080-exec-2] (SubmitServlet.java:39) - Conversion failed when converting the nvarchar value 'null' to data type int.
+23-Feb-2021 10:13:03.303 ERROR [http-nio-8080-exec-7] (SubmitServlet.java:39) - Conversion failed when converting the nvarchar value 'null' to data type int.

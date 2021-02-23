@@ -1,6 +1,7 @@
 package p0014.linhmd.dao;
 
 import org.apache.log4j.Logger;
+import p0014.linhmd.dto.Answer;
 import p0014.linhmd.dto.Question;
 import p0014.linhmd.ultilities.SQLQuery;
 
@@ -15,7 +16,7 @@ public class QuestionDAO {
     public static final int PAGE_LENGTH = 11;
 
     public List<Question> getQuestion(int page, String subject, String content, int status) throws SQLException {
-        String sql = "select q.id, q.question_content, q.a, q.b, q.c, q.d, q.answer_correct, q.create_date, q.subjectID \n"
+        String sql = "select q.id, q.question_content, q.create_date, q.subjectID \n"
                 + "from _question q\n"
                 + "where q.status = ?\n";
         int tag = 0;
@@ -50,22 +51,22 @@ public class QuestionDAO {
                 result = SQLQuery.executeQuery(sql, status, subject, "%" + content + "%", offset);
                 break;
         }
-        return result
-                .stream()
-                .map(Question::new)
-                .collect(Collectors.toList());
+
+        return result.stream()
+                    .map(Question::new)
+                    .collect(Collectors.toList());
 
     }
 
     public Question getQuestionByID(int id) throws SQLException {
-        String sql = "select q.id, q.question_content, q.a, q.b, q.c, q.d, q.answer_correct, q.create_date, q.subjectID \n"
+        String sql = "select q.id, q.question_content,  q.create_date, q.subjectID \n"
                 + "from _question q\n"
                 + "where q.id = ?\n";
         return new Question(SQLQuery.executeQuery(sql, id).get(0));
     }
 
     public List<Question> getAllQuestionFromSubject(String subjectID) {
-        String sql = "select q.id, q.question_content, q.a, q.b, q.c, q.d, q.answer_correct, q.create_date, q.subjectID \n"
+        String sql = "select q.id, q.question_content,  q.create_date, q.subjectID \n"
                 + "from _question q\n"
                 + "where q.status = 1 and q.subjectID = ?\n";
         try {
@@ -85,23 +86,22 @@ public class QuestionDAO {
     }
 
     public boolean addQuestion(Question question) {
-        String sql = "insert into _question (id, question_content, a, b, c, d, answer_correct, create_date, subjectID)\n"
-                + "values ((select max(q.id) + 1 from _question  q), ?, ?, ?, ?, ? , ?, ?, ?)";
+        String sql = "insert into _question (id, question_content,  create_date, subjectID)\n"
+                + "values ((select max(q.id) + 1 from _question  q), ?, ?, ?)";
         if (question == null) {
             return false;
         }
 
         try {
-            return SQLQuery
-                    .executeNonQuery(sql,
+            SQLQuery.executeNonQuery(sql,
                             question.getContent(),
-                            question.getAnsA(),
-                            question.getAnsB(),
-                            question.getAnsC(),
-                            question.getAnsD(),
-                            question.getCorrect() + "",
                             question.getCreateDate(),
                             question.getSubjectID());
+            AnswerDAO answerDAO = new AnswerDAO();
+            for (Answer answer : question.getAnswers()) {
+                answerDAO.insertAnswer(answer);
+            }
+            return true;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
             return false;
@@ -122,23 +122,27 @@ public class QuestionDAO {
 
     public boolean updateQuestion(Question question) {
         String sql = "update _question\n"
-                + "set question_content = ?, a = ? , b = ?, c = ?, d = ?, answer_correct = ?, subjectID = ?\n"
+                + "set question_content = ?,  subjectID = ?\n"
                 + "where id = ?";
         try {
-            return SQLQuery
-                    .executeNonQuery(sql,
+            SQLQuery.executeNonQuery(sql,
                             question.getContent(),
-                            question.getAnsA(),
-                            question.getAnsB(),
-                            question.getAnsC(),
-                            question.getAnsD(),
-                            question.getCorrect() + "",
                             question.getSubjectID(),
                             question.getId());
+            AnswerDAO answerDAO = new AnswerDAO();
+            for (Answer answer : question.getAnswers()) {
+                answerDAO.updateAnswer(answer);
+            }
+            return true;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+        QuestionDAO questionDAO = new QuestionDAO();
+        questionDAO.getAllQuestionFromSubject("IOT101").forEach(System.out::println);
     }
 
 }

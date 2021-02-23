@@ -7,13 +7,12 @@ package p0014.linhmd.dto;
 
 import java.io.Serializable;
 import org.apache.log4j.Logger;
+import p0014.linhmd.dao.AnswerDAO;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  *
@@ -26,11 +25,8 @@ public class Question implements Serializable{
 
     private int id;
     private String content;
-    private String ansA;
-    private String ansB;
-    private String ansC;
-    private String ansD;
-    private char correct;
+    private List<Answer> answers;
+
     private Date createDate;
     private String subjectID;
     
@@ -41,11 +37,14 @@ public class Question implements Serializable{
     public Question(int id, String content, String ansA, String ansB, String ansC, String ansD, char correct, String subjectID) {
         this.id = id;
         this.content = content.trim();
-        this.ansA = ansA.trim();
-        this.ansB = ansB.trim();
-        this.ansC = ansC.trim();
-        this.ansD = ansD.trim();
-        this.correct = correct;
+        this.answers = new ArrayList<>();
+        this.answers.add(new Answer(ansA.trim(), false, this));
+        this.answers.add(new Answer(ansB.trim(), false, this));
+        this.answers.add(new Answer(ansC.trim(), false, this));
+        this.answers.add(new Answer(ansD.trim(), false, this));
+
+        this.answers.get(correct - 'a').setCorrect(true);
+
         this.createDate = Calendar.getInstance().getTime();
         this.subjectID = subjectID;
     }
@@ -53,19 +52,16 @@ public class Question implements Serializable{
     public Question(List<String> data) {
         this.id = Integer.parseInt(data.get(0));
         this.content = data.get(1).trim();
-        this.ansA = data.get(2).trim();
-        this.ansB = data.get(3).trim();
-        this.ansC = data.get(4).trim();
-        this.ansD = data.get(5).trim();
-        this.correct = data.get(6).charAt(0);
 
         try {
-            this.createDate = SQL_DATE_FORMAT.parse(data.get(7));
-        } catch (ParseException e) {
+            this.answers = new AnswerDAO().getAnswersOfQuestion(this);
+            this.createDate = SQL_DATE_FORMAT.parse(data.get(2));
+        } catch (ParseException |SQLException e) {
+            e.printStackTrace();
             LOGGER.error(e.getMessage());
         }
 
-        this.subjectID = data.get(8);
+        this.subjectID = data.get(3);
     }
 
     public int getId() {
@@ -84,45 +80,7 @@ public class Question implements Serializable{
         this.content = content;
     }
 
-    public String getAnsA() {
-        return ansA;
-    }
 
-    public void setAnsA(String ansA) {
-        this.ansA = ansA;
-    }
-
-    public String getAnsB() {
-        return ansB;
-    }
-
-    public void setAnsB(String ansB) {
-        this.ansB = ansB;
-    }
-
-    public String getAnsC() {
-        return ansC;
-    }
-
-    public void setAnsC(String ansC) {
-        this.ansC = ansC;
-    }
-
-    public String getAnsD() {
-        return ansD;
-    }
-
-    public void setAnsD(String ansD) {
-        this.ansD = ansD;
-    }
-
-    public char getCorrect() {
-        return correct;
-    }
-
-    public void setCorrect(char correct) {
-        this.correct = correct;
-    }
 
     public String getCreateDate() {
         return DATE_FORMAT.format(createDate);
@@ -142,21 +100,6 @@ public class Question implements Serializable{
 
     public void setSubjectID(String subjectID) {
         this.subjectID = subjectID;
-    }
-
-    @Override
-    public String toString() {
-        return "Question{" +
-                "id='" + id + '\'' +
-                ", content='" + content + '\'' +
-                ", a='" + ansA + '\'' +
-                ", b='" + ansB + '\'' +
-                ", c='" + ansC + '\'' +
-                ", d='" + ansD + '\'' +
-                ", correct=" + correct +
-                ", createDate=" + createDate +
-                ", subjectID='" + subjectID + '\'' +
-                '}';
     }
 
     @Override
@@ -180,6 +123,20 @@ public class Question implements Serializable{
         final Question other = (Question) obj;
         return Objects.equals(this.id, other.id);
     }
-    
-    
+
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", answers=" + answers +
+                ", createDate=" + createDate +
+                ", subjectID='" + subjectID + '\'' +
+                '}';
+    }
 }

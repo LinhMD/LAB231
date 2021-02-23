@@ -52,32 +52,21 @@
                     </div>
                     <hr class="style18">
                     <div class="container d-flex flex-column w-75">
-                        <div class="form-group p-3 bg-dark rounded">
-                            <label for="ansA" class="font-weight-bold text-white">A) ${requestScope.error.A}</label>
-                            <input type="text" name="ansA" class="form-control" id="ansA" value ="${requestScope.UPDATE_QUESTION.ansA}">
-                        </div>
-                        <div class="form-group p-3 bg-dark rounded">
-                            <label for="ansB" class="font-weight-bold text-white">B) ${requestScope.error.B}</label>
-                            <input type="text" name="ansB" class="form-control" id="ansB" value ="${requestScope.UPDATE_QUESTION.ansB}">
-                        </div>
-                        <div class="form-group p-3 bg-dark rounded">
-                            <label for="ansC" class="font-weight-bold text-white">C) ${requestScope.error.C}</label>
-                            <input type="text" name="ansC" class="form-control" id="ansC" value ="${requestScope.UPDATE_QUESTION.ansC}">
-                        </div>
-                        <div class="form-group p-3 bg-dark rounded">
-                            <label for="ansD" class="font-weight-bold text-white">D) ${requestScope.error.D}</label>
-                            <input type="text" name="ansD" class="form-control" id="ansD" value ="${requestScope.UPDATE_QUESTION.ansD}">
-                        </div>
+                        <c:forEach var="ans" items="${requestScope.UPDATE_QUESTION.answers}" varStatus="loop">
+                            <div class="form-group p-3 bg-dark rounded">
+                                <label for="&#${loop.index + 65}" class="font-weight-bold text-white">&#${loop.index + 65}: ${requestScope.error.A}</label>
+                                <input type="text" name="&#${loop.index + 65}" class="form-control" id="&#${loop.index + 65}" value ="${ans.content}">
+                            </div>
+                        </c:forEach>
                     </div>
                     <hr class="style18">
                     <div class="form-group d-flex justify-content-center">
                         <div class="mx-5 bg-dark rounded p-3 ">
                             <label for="correct" class="font-weight-bold text-white">Correct Answer:</label>
                             <select  class=" form-control mdb-select md-form active-cyan float-xl-right" id="correct" name="correct">
-                                <option ${requestScope.UPDATE_QUESTION.correct == 'a'.charAt(0)? "selected='selected'": ""}>a</option>
-                                <option ${requestScope.UPDATE_QUESTION.correct == 'b'.charAt(0)? "selected='selected'": ""}>b</option>
-                                <option ${requestScope.UPDATE_QUESTION.correct == 'c'.charAt(0)? "selected='selected'": ""}>c</option>
-                                <option ${requestScope.UPDATE_QUESTION.correct == 'd'.charAt(0)? "selected='selected'": ""}>d</option>
+                                <c:forEach var="ans" items="${requestScope.UPDATE_QUESTION.answers}" varStatus="loop">
+                                    <option ${ans.correct? "selected='selected'": ""}>&#${loop.index + 97}</option>
+                                </c:forEach>
                             </select>
                         </div>
 

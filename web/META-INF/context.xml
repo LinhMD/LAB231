@@ -4,7 +4,7 @@
         name="jdbc/p0014"
         type="javax.sql.DataSource"
         driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-        url="jdbc:sqlserver://localhost:1433;databaseName=p0014"
+        url="jdbc:sqlserver://localhost:1433;databaseName=Quiz"
         username="sa" password="123456"
     />
     

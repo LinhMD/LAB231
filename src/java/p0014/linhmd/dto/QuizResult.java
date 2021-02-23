@@ -8,6 +8,7 @@ package p0014.linhmd.dto;
 import org.apache.log4j.Logger;
 import p0014.linhmd.dao.QuestionDAO;
 
+import javax.swing.*;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -21,7 +22,7 @@ import java.util.Vector;
  *
  * @author USER
  */
-public class QuizResult extends HashMap<Question, Character> implements Serializable{
+public class QuizResult extends HashMap<Question, Answer> implements Serializable{
     private static final Logger LOGGER = Logger.getLogger(QuizResult.class);
 
     public static SimpleDateFormat SQL_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
@@ -36,6 +37,7 @@ public class QuizResult extends HashMap<Question, Character> implements Serializ
         this.subject = subject;
         this.date = date;
     }
+
     public QuizResult(Vector<String> data){
         this.id = Integer.parseInt(data.get(0));
         this.quizTaker = data.get(1);
@@ -51,14 +53,20 @@ public class QuizResult extends HashMap<Question, Character> implements Serializ
         QuestionDAO questionDAO = new QuestionDAO();
         for (Vector<String> vector : vectors) {
             try {
-                this.put(questionDAO.getQuestionByID(Integer.parseInt(vector.get(0))), vector.get(1).charAt(0));
-            } catch (SQLException e) {
+                Question question = questionDAO.getQuestionByID(Integer.parseInt(vector.get(0)));
+                List<Answer> answers = question.getAnswers();
+                Answer answer = null;
+                try{
+                    answer = answers.get(answers.indexOf(new Answer(Integer.parseInt(vector.get(1)))));
+                }catch (NullPointerException | NumberFormatException | IndexOutOfBoundsException ignore){
+
+                }
+                this.put(question, answer);
+            } catch (Exception e) {
                 LOGGER.error(e.getMessage());
             }
         }
     }
-
-
 
     public String getDate() {
         return SQL_DATE_FORMAT.format(this.date);
@@ -78,11 +86,11 @@ public class QuizResult extends HashMap<Question, Character> implements Serializ
 
     public int getNumCorrectAns(){
         int count = 0;
-        count = this.keySet()
-                .stream()
-                .filter((question) -> (question.getCorrect() == this.get(question)))
-                .map(q -> 1)
-                .reduce(count, Integer::sum);
+        for (Answer value : this.values()) {
+            if(value != null && value.isCorrect())
+                count++;
+        }
+
         return count;
     }
 

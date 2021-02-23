@@ -44,10 +44,10 @@ public class UpdateServlet extends HttpServlet {
         try {
             String id = request.getParameter("id");
             String content = request.getParameter("content");
-            String ansA = request.getParameter("ansA");
-            String ansB = request.getParameter("ansB");
-            String ansC = request.getParameter("ansC");
-            String ansD = request.getParameter("ansD");
+            String ansA = request.getParameter("A");
+            String ansB = request.getParameter("B");
+            String ansC = request.getParameter("C");
+            String ansD = request.getParameter("D");
             char correct = request.getParameter("correct").charAt(0);
             String subject = request.getParameter("subject");
 
@@ -55,9 +55,19 @@ public class UpdateServlet extends HttpServlet {
             this.validate(error, content, ansA, ansB, ansC, ansD);
 
             if (!error.isError()) {
-                content = content.trim();
-                Question question = new Question(Integer.parseInt(id), content, ansA, ansB, ansC, ansD, correct, subject);
-                if (new QuestionDAO().updateQuestion(question)) {
+                QuestionDAO questionDAO = new QuestionDAO();
+                Question question = questionDAO.getQuestionByID(Integer.parseInt(id));
+                question.setContent(content.trim());
+
+                question.getAnswers().get(0).setContent(ansA.trim());
+                question.getAnswers().get(1).setContent(ansB.trim());
+                question.getAnswers().get(2).setContent(ansC.trim());
+                question.getAnswers().get(3).setContent(ansD.trim());
+                question.getAnswers().forEach(a -> a.setCorrect(false));
+                question.getAnswers().get(correct - 'a').setCorrect(true);
+
+                question.setSubjectID(subject);
+                if (questionDAO.updateQuestion(question)) {
                     request.setAttribute("message", "Update Question successfully");
                     HttpSession session = request.getSession();
                     session.setAttribute("UPDATE_QUESTION", question);

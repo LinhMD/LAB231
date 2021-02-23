@@ -38,7 +38,7 @@
             <form action="SearchQuestion" class=" my-3 py-3 rounded" style="background-color: #222831" method="post">
                 <input type="hidden" name="pageNum" value="${requestScope.page}">
                 <div class="container d-flex justify-content-center ">
-                    <label c="mx-3">lass
+                    <label class="mx-3">
                         <select class=" form-control mdb-select md-form   active-cyan" name="subject">
                             <option value="">------All Subject------</option>
                             <c:forEach var="subject" items="${SUBJECTS}">
@@ -94,11 +94,9 @@
                                     <a href="${UpdateURL}" style="color: white"> ${question.content}</a>
                                 </td>
                                 <td>
-                                    a) ${question.ansA} <br/>
-                                    b) ${question.ansB} <br/>
-                                    c) ${question.ansC} <br/>
-                                    d) ${question.ansD} <br/>
-                                    Corrected Answer: ${question.correct}
+                                    <c:forEach var="ans" items="${question.answers}" varStatus="counter">
+                                        <div ${ans.correct? 'style="color: greenyellow"' : ''} > &#${counter.index + 65}) ${ans.content}</div>
+                                    </c:forEach>
                                 </td>
                                 <td>
                                     <c:url var="DeleteURL" value="Delete">

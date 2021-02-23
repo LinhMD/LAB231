@@ -40,13 +40,12 @@
                 <h4>${question.key.content}</h4>
                 <hr class="style18">
                 <p>
-                    a) ${question.key.ansA} <br/>
-                    b) ${question.key.ansB} <br/>
-                    c) ${question.key.ansC} <br/>
-                    d) ${question.key.ansD} <br/>
+                    <c:forEach var="answer" items="${question.key.answers}" varStatus="loop">
+                        &#${loop.index + 97}) ${answer.content} <br/>
+                    </c:forEach>
                 </p>
                 <hr class="style18">
-                <p>Your choose: ${question.value != 'z'.charAt(0)? question.value : 'none'}</p>
+                <p>Your choose: ${question.value != null? question.value.content : 'none'}</p>
             </div>
         </c:forEach>
     </div>

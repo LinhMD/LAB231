@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import p0014.linhmd.dto.Answer;
 import p0014.linhmd.dto.Question;
 import p0014.linhmd.dto.QuizResult;
 
@@ -51,7 +52,8 @@ public class TakeQuizServlet extends HttpServlet {
                     
                     if(ans != null){
                         Question curQuestion = quiz.get(i);
-                        result.put(curQuestion, ans.charAt(0));
+                        Answer answer = curQuestion.getAnswers().get(ans.charAt(0) - 'a');
+                        result.put(curQuestion, answer);
                     }
                     
                     String btn = request.getParameter("btnAction");
@@ -72,6 +74,8 @@ public class TakeQuizServlet extends HttpServlet {
             }else{
                 
             }
+        }catch (Exception e){
+            e.printStackTrace();
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }

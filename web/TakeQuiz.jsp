@@ -35,7 +35,7 @@
                             <c:url var="QuestionLink" value="Quiz">
                                 <c:param name="index" value="${count.index}">${count.index}</c:param>
                             </c:url>
-                            <a class="btn ${sessionScope.QUIZ_RESULT.get(question) != 'z'.charAt(0)? "btn-dark": "btn-warning"}  text-white" style="color: antiquewhite"  href="${QuestionLink}">${count.index +1}</a>
+                            <a class="btn ${sessionScope.QUIZ_RESULT.get(question) != null? "btn-dark": "btn-warning"}  text-white" style="color: antiquewhite"  href="${QuestionLink}">${count.index +1}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -53,25 +53,12 @@
                     <hr class="style18">
 
                     <div class="container d-flex flex-column w-75 text-white p-3 bg-dark rounded" id="options">
-                        <label class="options">${requestScope.QUESTION.ansA}
-                            <input type="radio" name="ans" value="a" ${requestScope.USER_ANSWER == "a".charAt(0)? 'checked="checked"' :""}>
-                            <span class="checkmark"></span>
-                        </label>
-                        <hr class="style18">
-                        <label class="options">${requestScope.QUESTION.ansB}
-                            <input type="radio" name="ans" value="b" ${requestScope.USER_ANSWER == "b".charAt(0)? 'checked' :''}>
-                            <span class="checkmark"></span>
-                        </label>
-                        <hr class="style18">
-                        <label class="options">${requestScope.QUESTION.ansC}
-                            <input type="radio" name="ans" value="c" ${requestScope.USER_ANSWER == "c".charAt(0)? 'checked="checked"' :""}>
-                            <span class="checkmark"></span>
-                        </label>
-                        <hr class="style18">
-                        <label class="options">${requestScope.QUESTION.ansD}
-                            <input type="radio" name="ans" value="d" ${requestScope.USER_ANSWER == "d".charAt(0)? 'checked="checked"' :""}>
-                            <span class="checkmark"></span>
-                        </label>
+                        <c:forEach var="answer" items="${requestScope.QUESTION.answers}" varStatus="loop">
+                            <label class="options">${answer.content}
+                                <input type="radio" name="ans" value=&#${loop.index + 97}" ${requestScope.USER_ANSWER == answer? 'checked="checked"' :""}>
+                                <span class="checkmark"></span>
+                            </label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="d-flex  pt-3 justify-content-between">

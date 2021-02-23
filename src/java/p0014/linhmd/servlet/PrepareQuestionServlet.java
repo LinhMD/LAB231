@@ -70,7 +70,7 @@ public class PrepareQuestionServlet extends HttpServlet {
                                             quizTaker.getEmail(),
                                             selectedSubject.getCode(),
                                             Calendar.getInstance().getTime());
-                quiz.forEach(q -> result.put(q, 'z'));
+                quiz.forEach(q -> result.put(q, null));
                 session.setAttribute("QUIZ_RESULT", result);
                 
                 Calendar now = Calendar.getInstance();
