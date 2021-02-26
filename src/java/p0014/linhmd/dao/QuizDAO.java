@@ -38,7 +38,7 @@ public class QuizDAO {
 		String sql = "select id, quiz_taker, subject, time, point \n" +
 				"from _quiz_history\n" +
 				"where quiz_taker = ? \n"+
-				"order by time\n" +
+				"order by time ASC\n" +
 				"offset ? row fetch next " + PAGE_LENGTH + " row only \n";
 		Vector<Vector<String>> vectors = SQLQuery.executeQuery(sql, email, page * PAGE_LENGTH);
 		List<QuizResult> results = vectors.stream().map(QuizResult::new).collect(Collectors.toList());

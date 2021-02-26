@@ -151,7 +151,7 @@ public class DispathFilter implements Filter {
         
         try{
             String resource = uri.substring(uri.lastIndexOf("/") +1);
-            
+            HttpSession session = req.getSession(false);
             Properties action = (Properties)this.filterConfig.getServletContext().getAttribute("ACTION");
             url = action.getProperty("LoginPage");
             if(resource.length() > 0){
@@ -159,7 +159,6 @@ public class DispathFilter implements Filter {
                 if(resource.contains(".html") || resource.contains(".jsp"))
                     url = resource;
             }else{
-                HttpSession session = req.getSession(false);
                 if(session != null){
                     User user  = (User) session.getAttribute("USER");
                     if(user != null)
@@ -167,7 +166,7 @@ public class DispathFilter implements Filter {
                             url = action.getProperty("SearchQuestion");
                         else{
                             if(session.getAttribute("QUIZ_RESULT") != null)
-                                url = action.getProperty("TakeQuizView");
+                                url = action.getProperty("Quiz");
                             else
                                 url = action.getProperty("ChooseSubject");
                         }

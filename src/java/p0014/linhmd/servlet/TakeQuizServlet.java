@@ -58,7 +58,7 @@ public class TakeQuizServlet extends HttpServlet {
                     
                     String btn = request.getParameter("btnAction");
                     if(btn != null){
-                        if(btn.equals("Next") && i < quiz.size() - 2){
+                        if(btn.equals("Next") && i < quiz.size() - 1){
                             i++;
                         }else if(btn.equals("Previous") && i > 0){
                             i--;
@@ -70,9 +70,8 @@ public class TakeQuizServlet extends HttpServlet {
                     request.setAttribute("QUESTION", nextQuestion);
                     request.setAttribute("USER_ANSWER", result.get(nextQuestion));
                 }
-                
             }else{
-                
+                url = action.getProperty("LoginPage");
             }
         }catch (Exception e){
             e.printStackTrace();

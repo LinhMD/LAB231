@@ -70,9 +70,9 @@ public class UpdateServlet extends HttpServlet {
                 if (questionDAO.updateQuestion(question)) {
                     request.setAttribute("message", "Update Question successfully");
                     HttpSession session = request.getSession();
-                    session.setAttribute("UPDATE_QUESTION", question);
-                    List<Question> questions = (List<Question>) session.getAttribute("QUESTIONS");
-                    questions.set(questions.indexOf(question), question);
+                    request.setAttribute("UPDATE_QUESTION", question);
+//                    List<Question> questions = (List<Question>) session.getAttribute("QUESTIONS");
+//                    questions.set(questions.indexOf(question), question);
                 } else {
                     request.setAttribute("message", "Update Question failed");
                 }
@@ -81,6 +81,7 @@ public class UpdateServlet extends HttpServlet {
                 request.setAttribute("error", error);
             }
         }catch(Exception ex){
+            ex.printStackTrace();
             LOGGER.error(ex.getMessage());
         }finally {
             request.getRequestDispatcher(url).forward(request, response);

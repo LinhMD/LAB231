@@ -5,6 +5,7 @@
  */
 package p0014.linhmd.servlet;
 
+import org.apache.log4j.Logger;
 import p0014.linhmd.singleton.SubjectList;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.util.Properties;
  * @author USER
  */
 public class BeforeChooseSubjectServlet extends HttpServlet {
-
+    private static final Logger LOGGER = Logger.getLogger(BeforeChooseSubjectServlet.class);
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,9 +33,13 @@ public class BeforeChooseSubjectServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getSession().setAttribute("SUBJECTS", SubjectList.getInstance());
-        Properties action = (Properties) this.getServletContext().getAttribute("ACTION");
-        request.getRequestDispatcher(action.getProperty("SelectSubjectView")).forward(request, response);
+        try{
+            request.getSession().setAttribute("SUBJECTS", SubjectList.getInstance());
+            Properties action = (Properties) this.getServletContext().getAttribute("ACTION");
+            request.getRequestDispatcher(action.getProperty("SelectSubjectView")).forward(request, response);
+        }catch (Exception e){
+            LOGGER.error(e.getMessage());
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

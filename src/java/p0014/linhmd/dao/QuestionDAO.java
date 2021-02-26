@@ -28,12 +28,12 @@ public class QuestionDAO {
 
         if (content != null && !content.trim().isEmpty()) {
             sql += " and q.question_content like ? \n";
-            System.out.println(content);
             tag += 3;
         }
 
-        int offset = page * PAGE_LENGTH;
-        sql += "ORDER by create_date\n"
+        int offset = page * PAGE_LENGTH + status == 0 ? 1: 0;
+
+        sql += "ORDER by create_date ASC \n"
                 + "offset ? row fetch next " + PAGE_LENGTH + " row only \n";
 
         Vector<Vector<String>> result = null;
@@ -91,8 +91,8 @@ public class QuestionDAO {
         if (question == null) {
             return false;
         }
-
         try {
+            question.setId(this.getMaxQuestionID());
             SQLQuery.executeNonQuery(sql,
                             question.getContent(),
                             question.getCreateDate(),
@@ -103,6 +103,7 @@ public class QuestionDAO {
             }
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             LOGGER.error(e.getMessage());
             return false;
         }

@@ -30,6 +30,11 @@
                     <li class="nav-item mx-3">
                         <a class="btn bg-dark mb-4 text-white"  onClick="return confirm('Do you want to logout?')" href="Logout">Logout</a>
                     </li>
+                    <c:if test="${sessionScope.QUIZ != null}">
+                        <li class="nav-item mx-3">
+                            <a href="CreateView"  class="btn bg-dark mb-4 text-white" >+Add New</a>
+                        </li>
+                    </c:if>
                 </ul>
                 
             </div>
@@ -85,7 +90,7 @@
                 <hr class="style18">
                 <div class="form-group d-flex justify-content-center">
                     <input type="submit" value="Update Question"  class="btn bg-dark text-white justify-content-left m-3">
-                    <a class="btn bg-dark m-3 text-white justify-content-right" href="#">Back to Question Bank</a>
+                    <a class="btn bg-dark m-3 text-white justify-content-right" href="SearchQuestion">Back to Question Bank</a>
                 </div>
             </form>
         </div>        

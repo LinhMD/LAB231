@@ -90,7 +90,7 @@ public class PrepareQuestionServlet extends HttpServlet {
                             session.removeAttribute("QUIZ_RESULT");
                             session.removeAttribute("QUIZ_SUBJECT");
                         }
-                    } catch (InterruptedException | SQLException e) {
+                    } catch (Exception e) {
                         LOGGER.error(e.getMessage());
                     }
                 });
@@ -99,7 +99,6 @@ public class PrepareQuestionServlet extends HttpServlet {
                 url = "LoginPage";
             }
         }catch(ArrayIndexOutOfBoundsException | NullPointerException ignored){
-           
         }catch(Exception e){
             LOGGER.error(e.getMessage());
         }finally{

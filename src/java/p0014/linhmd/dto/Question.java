@@ -82,8 +82,8 @@ public class Question implements Serializable{
 
 
 
-    public String getCreateDate() {
-        return DATE_FORMAT.format(createDate);
+    public Date getCreateDate() {
+        return createDate;
     }
 
     public void setCreateDate(String createDate) {

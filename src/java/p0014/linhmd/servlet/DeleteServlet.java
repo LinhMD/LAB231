@@ -44,7 +44,7 @@ public class DeleteServlet extends HttpServlet {
                     request.setAttribute("message", "Retrive Question successfully!!");
             }
             
-        }catch(NumberFormatException | NullPointerException ex){
+        }catch(NumberFormatException | NullPointerException ignored){
         }catch(Exception e){
             LOGGER.error(e.getMessage());
         }finally{

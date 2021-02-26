@@ -28,6 +28,7 @@ create table _subject
 	question_limit int not null
 )
 go
+select * from _subject
 
 insert into _subject (code, name, question_limit, time)
 values ('IOT101', 'Internet of Things', 10, 10),
@@ -90,6 +91,11 @@ values (1, '1', '2021-05-02', 'IOT101'),
 		(44, '21',  '2021-05-02', 'SSG101'),
 		(45, '22',  '2021-05-02', 'SSG101'),
 		(46, '23',  '2021-05-02', 'SSG101')
+go
+
+insert into _question (id, question_content, create_date, subjectID, status)
+values (0, 'Not a question, please do not set status to active', '2021-05-02', 'IOT101', 0)
+go
 
 create table _answer
 (
@@ -97,7 +103,7 @@ create table _answer
 	content nvarchar(255) not null,
 	question_id int foreign key references _question(id),
 	is_true bit not null
-)
+)go
 
 insert into _answer(id, content, question_id, is_true)
 values (1, 'a', 1, 1), (2, 'b', 1, 0), (3, 'c', 1, 0), (4, 'd', 1, 0), 
@@ -146,13 +152,7 @@ values (1, 'a', 1, 1), (2, 'b', 1, 0), (3, 'c', 1, 0), (4, 'd', 1, 0),
 (173, 'a', 44, 1), (174, 'b', 44, 0), (175, 'c', 44, 0), (176, 'd', 44, 0), 
 (177, 'a', 45, 1), (178, 'b', 45, 0), (179, 'c', 45, 0), (180, 'd', 45, 0), 
 (181, 'a', 46, 1), (182, 'b', 46, 0), (183, 'c', 46, 0), (184, 'd', 46, 0)
-
-select id, content, question_id, is_true from _answer
-where question_id = '1'
-
-update _answer
-set content = '', is_true = ''
-where id = ''
+go
 
 
 create table _quiz_history
@@ -163,11 +163,14 @@ create table _quiz_history
 	time date not null,
 	point float not null default 0
 )
+go
 
 create table _quiz_detail
 (
 	quiz_id int not null foreign key references _quiz_history(id),
 	question_id int not null foreign key references _question(id),
-	answer char,
+	answer_id int foreign key references _answer(id),
 	primary key (quiz_id, question_id)
-)
+)go
+
+

@@ -19,11 +19,12 @@ public class SubmitServlet extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		Properties action = (Properties) this.getServletContext().getAttribute("ACTION");
-		String url = action.getProperty("ChooseSubject");
+		String url = action.getProperty("LoginPage");
 		try{
 			HttpSession session = request.getSession(false);
 			if(session != null){
 				QuizResult result = (QuizResult) session.getAttribute("QUIZ_RESULT");
+				url = action.getProperty("ChooseSubject");
 				if(result != null){
 					session.removeAttribute("QUIZ");
 					session.removeAttribute("END_TIME");

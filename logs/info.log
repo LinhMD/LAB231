@@ -131,3 +131,11 @@ Stacktrace:
 Stacktrace:
 23-Feb-2021 10:08:20.515 ERROR [http-nio-8080-exec-2] (SubmitServlet.java:39) - Conversion failed when converting the nvarchar value 'null' to data type int.
 23-Feb-2021 10:13:03.303 ERROR [http-nio-8080-exec-7] (SubmitServlet.java:39) - Conversion failed when converting the nvarchar value 'null' to data type int.
+24-Feb-2021 10:18:42.558 ERROR [http-nio-8080-exec-9] (UpdateServlet.java:84) - 
+24-Feb-2021 10:20:33.616 ERROR [http-nio-8080-exec-2] (UpdateServlet.java:84) - 
+24-Feb-2021 10:20:38.975 ERROR [http-nio-8080-exec-4] (UpdateServlet.java:84) - 
+24-Feb-2021 10:21:17.669 ERROR [http-nio-8080-exec-8] (UpdateServlet.java:85) - 
+24-Feb-2021 12:13:27.166 ERROR [http-nio-8080-exec-4] (QuestionDAO.java:105) - Conversion failed when converting date and/or time from character string.
+24-Feb-2021 12:13:51.587 ERROR [http-nio-8080-exec-7] (QuestionDAO.java:105) - Conversion failed when converting date and/or time from character string.
+24-Feb-2021 12:14:39.905 ERROR [http-nio-8080-exec-4] (QuestionDAO.java:106) - Conversion failed when converting date and/or time from character string.
+24-Feb-2021 12:15:53.531 ERROR [http-nio-8080-exec-11] (QuestionDAO.java:106) - Conversion failed when converting date and/or time from character string.
